@@ -60,6 +60,25 @@
       "browserify-css"
     ]
   },
+  "homepage": "http://ngageoint.github.io/geopackage-viewer-js/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngageoint/geopackage-viewer-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ngageoint/geopackage-viewer-js/issues"
+  },
+  "files": [
+    "vendor",
+    "app.css",
+    "common.js",
+    "gp.js",
+    "icon.png",
+    "includes.css",
+    "index.html",
+    "index.js",
+    "package.json"
+  ],
   "scripts": {
     "create": "npm install --no-optional && npm run typedoc --options typedoc.json",
     "postinstall": "npm run build",
