@@ -2,6 +2,10 @@
 
 This library is an example of utilizing leaflet-geopackage and several converter libraries to convert data in various geospatial formats into GeoPackage and display that content in Leaflet.
 
+### Demo
+
+https://ngageoint.github.io/geopackage-viewer-js/
+
 ### Installation ###
 
 [![NPM](https://img.shields.io/npm/v/@ngageoint/geopackage-viewer-js.svg)](https://www.npmjs.com/package/@ngageoint/geopackage-viewer-js)
