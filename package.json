@@ -1,5 +1,19 @@
 {
-  "name": "geopackage-viewer-js",
+  "name": "@ngageoint/geopackage-viewer-js",
+  "version": "4.1.0",
+  "description": "GeoPackage Viewer",
+  "keywords": [
+    "NGA"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "NGA",
+    "url": "https://www.nga.mil"
+  },
+  "contributors": [
+    "Daniel Barela <daniel.barela@gmail.com>",
+    "Christopher Caldwell <c.caldwell90@gmail.com>"
+  ],
   "dependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
