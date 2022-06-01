@@ -1,0 +1,10 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+    <button mat-button color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+      Open a GeoPackage or Convert a Supported File Type
+        <!--<mat-icon>attach_file</mat-icon>-->
+    </button>
+</div>
