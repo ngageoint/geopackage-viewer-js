@@ -21,6 +21,10 @@
     "lib": [
       "es2020",
       "dom"
+    ],
+    "typeRoots": [
+      "src/customTypings",
+      "node_modules/@types"
     ]
   },
   "angularCompilerOptions": {
