@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="main-panel.component.css">
-</head>
+</head> -->
 <!--
 <div class="sidenav">
 
@@ -18,18 +18,59 @@
 
 </div>
 -->
-<div class="card" style="width: 19rem; ">
-  <div class="card-body">
-    <div style="position: relative; left: 870px; top: -10px;">
-    <h4 class="card-title"><a href="https://github.com/ngageoint/geopackage-viewer-js">API Documentation</a></h4>
-    <p class="card-text">
-      You can load a GeoPackage directly from a URL by including a gpkg parameter in the URL. Specify which layers (if any) you would like to load with layers parameters.
-    </p>
-    <mat-card-actions><h4 style="font-family: Arial, Helvetica, sans-serif;"><a href="https://ngageoint.github.io/geopackage-js/?gpkg=http://ngageoint.github.io/GeoPackage/examples/rivers.gpkg&layers=rivers">For Example (click me)</a></h4></mat-card-actions>
-    <file-upload></file-upload>
-    <h5>Supported file types for conversion are GeoJSON, Shapefile, Shapefile Zip, MBTiles, KML and KMZ</h5>
-  </div>
-</div>
-</div>
+<!-- <mat-sidenav-container class="" hasBackdrop="false">
+  <mat-sidenav #drawer mode="over" position="end" autoFocus="false">
+    <div class="card">
+      <div class="card-body">
+        <div style>
+        <h4 class="card-title"><a href="https://github.com/ngageoint/geopackage-viewer-js">API Documentation</a></h4>
+        <p class="card-text">
+          You can load a GeoPackage directly from a URL by including a gpkg parameter in the URL. Specify which layers (if any) you would like to load with layers parameters.
+        </p>
+        <mat-card-actions><h4 style="font-family: Arial, Helvetica, sans-serif;"><a href="https://ngageoint.github.io/geopackage-js/?gpkg=http://ngageoint.github.io/GeoPackage/examples/rivers.gpkg&layers=rivers">For Example (click me)</a></h4></mat-card-actions>
+        <file-upload></file-upload>
+        <h5>Supported file types for conversion are GeoJSON, Shapefile, Shapefile Zip, MBTiles, KML and KMZ</h5>
+      </div>
+    </div>
 
-</html>
+    </div>
+</mat-sidenav>
+<mat-sidenav-content>
+  content
+</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="card">
+      <div class="card-body">
+        <div style>
+        <h4 class="card-title"><a href="https://github.com/ngageoint/geopackage-viewer-js">API Documentation</a></h4>
+        <p class="card-text">
+          You can load a GeoPackage directly from a URL by including a gpkg parameter in the URL. Specify which layers (if any) you would like to load with layers parameters.
+        </p>
+        <mat-card-actions><h4><a href="https://ngageoint.github.io/geopackage-js/?gpkg=http://ngageoint.github.io/GeoPackage/examples/rivers.gpkg&layers=rivers">For Example (click me)</a></h4></mat-card-actions>
+        <file-upload></file-upload>
+        <h5>Supported file types for conversion are GeoJSON, Shapefile, Shapefile Zip, MBTiles, KML and KMZ</h5>
+        <h6>- or -</h6>
+        <h6>Open one of these samples:</h6>
+        <h4><a href="https://ngageoint.github.io/GeoPackage/examples/rivers.gpkg">Natural Earth Rivers</a></h4>
+        <h4><a href="https://www.geopackage.org/data/gdal_sample.gpkg">Technology Test Data Set</a></h4>  
+        <h4>More GeoPackages can be found at:</h4>
+        <h4><a href="https://www.geopackage.org/data.html">https://www.geopackage.org/data.html</a></h4>  
+      </div>
+      </div>
+    </div>
+  </mat-drawer>
+  
+  
+  
+  <mat-drawer-content>
+  
+    Main content
+  
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!-- </html> -->

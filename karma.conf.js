@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/geo-package-viewer'),
+      dir: require('path').join(__dirname, './coverage/taketwo'),
       subdir: '.',
       reporters: [
         { type: 'html' },

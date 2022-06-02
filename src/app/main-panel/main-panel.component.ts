@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 
 
 
+
 @Component({
   selector: 'app-main-panel',
   templateUrl: './main-panel.component.html',
@@ -26,7 +27,7 @@ export class MainPanelComponent implements OnInit {
     const file:File = event.target.files[0];
 
     if (file) {
-
+      console.log("hi")
         this.fileName = file.name;
 
         const formData = new FormData();
