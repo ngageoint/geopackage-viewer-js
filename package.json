@@ -23,7 +23,7 @@
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
-    "@ngageoint/geopackage": "4.1.0"
+    "@ngageoint/geopackage": "danielbarela/geopackage-js#develop"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.6",
@@ -42,6 +42,7 @@
   "browser": {
     "fs": false,
     "os": false,
-    "path": false
+    "path": false,
+    "util": false
   }
 }
