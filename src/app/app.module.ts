@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MapComponent } from './map/map.component';
+import { GeopackageGeneralInformationComponent } from './geopackage-general-information/geopackage-general-information.component';
+import { GeopackageFeatureTableComponent } from './geopackage-feature-table/geopackage-feature-table.component';
 
 
 
@@ -19,6 +21,8 @@ import { MapComponent } from './map/map.component';
     MainPanelComponent,
     FileUploadComponent,
     MapComponent,
+    GeopackageGeneralInformationComponent,
+    GeopackageFeatureTableComponent,
   ],
   imports: [
     BrowserAnimationsModule,

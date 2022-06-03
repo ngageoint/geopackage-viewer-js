@@ -44,6 +44,7 @@ console.log("i am a file")
         r.onload = () => {
           const array = new Uint8Array(r.result as ArrayBuffer);
           console.log("file has been read") 
+          // set the array of bytes on the geopackage service
           this.geopackageservice.setGeoPackageArray(array);
 
         }

@@ -1,0 +1,15 @@
+<p>geopackage-general-information works! {{name}}</p>
+
+<div *ngIf="tables">
+Feature Tables
+
+<li *ngFor="let featureTable of tables.features; index as i;">
+  table name is: {{featureTable}}
+  <app-geopackage-feature-table [tableName]="featureTable"></app-geopackage-feature-table>
+</li>
+
+Tile Tables
+<li *ngFor="let tileTable of tables.tiles; index as i;">
+  table name is: {{tileTable}}
+</li>
+</div>
