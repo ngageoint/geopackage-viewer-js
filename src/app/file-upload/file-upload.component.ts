@@ -11,17 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { GeopackageService } from '../geopackage.service';
 
-/*@NgModule({
-  imports:      
-  [ BrowserModule, 
-    FormsModule, 
-    BrowserAnimationsModule, 
-    MatButtonModule,
-   ],
-  declarations: [  ],
-  bootstrap:    [ AppComponent ]
-})*/
-// make sure to turn everything into cards
 
 @Component({
   selector: 'file-upload',
@@ -38,7 +27,7 @@ export class FileUploadComponent {
   onFileSelected(event: any) {
 
       const file:File = event.target.files[0];
-console.log("i am a file")
+      console.log("i am a file")
       if (file) {
         const r = new FileReader()
         r.onload = () => {
@@ -50,24 +39,28 @@ console.log("i am a file")
         }
         r.readAsArrayBuffer(file)
           // if it is a GeoPackage file
-          // if (f.name.lastIndexOf(‘gpkg’) === f.name.lastIndexOf(‘.’) + 1) {
-          //   if (window.Piwik) {
-          //     Piwik.getAsyncTracker().trackEvent(‘GeoPackage’, ‘load’, ‘File Size’, array.byteLength);
-          //   }
-          //   ga(‘send’, {
-          //     hitType: ‘event’,
-          //     eventCategory: ‘GeoPackage’,
-          //     eventAction: ‘load’,
-          //     eventLabel: ‘File Size’,
-          //     eventValue: array.byteLength,
-          //   });
-          //   loadByteArray(array).then(function() {
-          //     $(‘#choose-label’)
-          //       .find(‘i’)
-          //       .toggle();
-          //     $(‘#download’).removeClass(‘gone’);
-          //     $(‘#status’).addClass(‘gone’);
-          //   });
+          //  if (file.name.lastIndexOf('gpkg') === file.name.lastIndexOf('.') + 1) {
+          //    if (window.piwik) {
+          //      Piwik.getAsyncTracker().trackEvent('GeoPackage', 'load', 'File Size', array.byteLength);
+          //    }
+          //    ga('send', {
+          //      hitType: 'event',
+          //      eventCategory: 'GeoPackage',
+          //      eventAction: 'load',
+          //      eventLabel: 'File Size',
+          //      eventValue: array.byteLength,
+          //    });
+          //    loadByteArray(array).then(function() {
+          //      $('#choose-label')
+          //        .find('i')
+          //        .toggle();
+          //      $('#download').removeClass('gone');
+          //      $('#status').addClass('gone');
+          //    });
+
+
+
+
         console.log(`the file is $file`)
           // this.fileName = file.name;
 

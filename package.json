@@ -20,10 +20,13 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@asymmetrik/ngx-leaflet": "^13.0.2",
+    "@ngageoint/geopackage": "danielbarela/geopackage-js#develop",
+    "@types/leaflet": "^1.7.10",
+    "leaflet": "^1.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@ngageoint/geopackage": "danielbarela/geopackage-js#develop"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.6",
