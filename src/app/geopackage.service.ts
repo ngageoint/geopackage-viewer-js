@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { GeoPackageAPI, setSqljsWasmLocateFile, GeoPackage } from '@ngageoint/geopackage/dist/geopackage.min';
+import { GeoPackageAPI, setSqljsWasmLocateFile, GeoPackage, FeatureTiles } from '@ngageoint/geopackage/dist/geopackage.min';
 import { FeatureDao } from '@ngageoint/geopackage/dist/lib/features/user/featureDao';
 import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/featureRow';
+import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
+import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 import { Subject } from 'rxjs';
 
 export interface GeoPackageEvent {
@@ -18,12 +20,22 @@ export interface GeoPackageTableEvent {
 export class GeopackageService {
 
   private geopackage: GeoPackage | undefined;
+  private activateFeatureLayerSource = new Subject<GeoPackageTableEvent>();
+  private deactivateFeatureLayerSource = new Subject<GeoPackageTableEvent>();
+
+  private activateTileLayerSource = new Subject<GeoPackageTableEvent>();
+  private deactivateTileLayerSource = new Subject<GeoPackageTableEvent>();
 
   private geopackageOpenedSource = new Subject<GeoPackageEvent>();
   private geopackageTablesUpdatedSource = new Subject<GeoPackageTableEvent>();
 
   geopackageOpened$ = this.geopackageOpenedSource.asObservable();
   geopackageTablesUpdated$ = this.geopackageTablesUpdatedSource.asObservable();
+  activateFeatureLayer$ = this.activateFeatureLayerSource.asObservable();
+  deactivateFeatureLayer$ = this.deactivateFeatureLayerSource.asObservable();
+
+  activateTileLayer$ = this.activateTileLayerSource.asObservable();
+  deactivateTileLayer$ = this.deactivateTileLayerSource.asObservable();
 
   // method to call when the geopackage is opened
   geopackageOpened(geopackage: GeoPackage): void {
@@ -33,10 +45,54 @@ export class GeopackageService {
     });
   }
 
+  activateFeatureLayer(tablename: string): void {
+    console.log("activated layer" + tablename)
+    this.activateFeatureLayerSource.next({
+      tableNames: [tablename]
+    })
+  }
+
+  deactivateFeatureLayer(tablename: string): void {
+    console.log("DEactivated layer" + tablename)
+    this.deactivateFeatureLayerSource.next({
+      tableNames: [tablename]
+    })
+  }
+
+  getFeatureTiles(tablename: string): FeatureTiles {
+    const featureDao = this.getGeoPackageFeatureDao(tablename)
+    return new FeatureTiles(featureDao!, 256, 256)
+  }
+
+  activateTileLayer(tablename: string): void {
+    console.log("activated tile" + tablename)
+    this.activateTileLayerSource.next({
+      tableNames: [tablename]
+    })
+  }
+
+  deactivateTileLayer(tablename: string): void {
+    console.log("DEactivated tile" + tablename)
+    this.deactivateTileLayerSource.next({
+      tableNames: [tablename]
+    })
+  }
+
+
   getGeoPackageFeatureDao(tableName: string): FeatureDao<FeatureRow> | undefined {
     // https://ngageoint.github.io/geopackage-js/classes/geopackage.html#getfeaturedao
     console.log('getting the feature dao', tableName)
     return this.geopackage?.getFeatureDao(tableName)
+  }
+
+  getGeoPackageTileDao(tableName: string): TileDao<TileRow> | undefined {
+    // https://ngageoint.github.io/geopackage-js/classes/geopackage.html#getfeaturedao
+    console.log('getting the feature dao', tableName)
+    return this.geopackage?.getTileDao(tableName)
+  }
+
+  xyzTileScaled(table: string, x: number, y: number, z: number, width?: number, height?: number, canvas?: any, zoomIn?: 2, zoomOut?: 2): Promise<any> {
+    return this.geopackage?.xyzTileScaled(table, x, y, z, width, height, canvas, zoomIn, zoomOut)!
   }
 
   async setGeoPackageArray(bytes: ArrayBuffer) {

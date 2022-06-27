@@ -14,7 +14,7 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   @Input() featureDao: FeatureDao<FeatureRow> | undefined
 
   count: number = 0
-
+  showDetails = null;
   constructor(
     @Inject(GeopackageService) private geopackageService: GeopackageService
   ) { }
@@ -23,11 +23,9 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // when the table name changes, go get the feature dao from the geopackage service which is the object you can use to
-    // access all of the things about a feature table and the rows
-    // https://ngageoint.github.io/geopackage-js/classes/featuredao.html
     this.featureDao = this.geopackageService.getGeoPackageFeatureDao(this.tableName)
     this.count = this.featureDao?.getCount() ?? 0
+    this.geopackageService.activateFeatureLayer(this.tableName)
   }
 
 }

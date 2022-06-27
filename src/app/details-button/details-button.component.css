@@ -1,0 +1,16 @@
+/* this is a css file stupid */
+
+
+.mat-tab-group {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    max-width: 100%;
+  }
+
+::ng-deep .mat-tab-label {
+    height: 27px !important;
+    min-height: 5px!important;
+    margin: 10px!important;
+    width: 90px!important;
+    min-width: 5px!important;
+  }

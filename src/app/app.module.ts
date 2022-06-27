@@ -13,6 +13,13 @@ import { MapComponent } from './map-component/map-component.component';
 import { GeopackageGeneralInformationComponent } from './geopackage-general-information/geopackage-general-information.component';
 import { GeopackageFeatureTableComponent } from './geopackage-feature-table/geopackage-feature-table.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { GeopackageTileTableComponent } from './geopackage-tile-table/geopackage-tile-table.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DetailsButtonComponent } from './details-button/details-button.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -24,6 +31,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     MapComponent,
     GeopackageGeneralInformationComponent,
     GeopackageFeatureTableComponent,
+    GeopackageTileTableComponent,
+    DetailsButtonComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,6 +43,10 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     MatCardModule,
     MatSidenavModule,
     LeafletModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
