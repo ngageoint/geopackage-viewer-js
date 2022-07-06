@@ -19,6 +19,19 @@ import { DetailsButtonComponent } from './details-button/details-button.componen
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { SrsComponent } from './srs/srs.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ContentsComponent } from './contents/contents.component';
+import { ContentssrsComponent } from './contentssrs/contentssrs.component';
+import { GeoColumnsComponent } from './geo-columns/geo-columns.component';
+import { ColumnsComponent } from './columns/columns.component';
+import { FeatureTabComponent } from './feature-tab/feature-tab.component';
+import { OnoffswitchComponent } from './onoffswitch/onoffswitch.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+
 
 
 
@@ -33,6 +46,13 @@ import { MatButtonModule } from '@angular/material/button';
     GeopackageFeatureTableComponent,
     GeopackageTileTableComponent,
     DetailsButtonComponent,
+    SrsComponent,
+    ContentsComponent,
+    ContentssrsComponent,
+    GeoColumnsComponent,
+    ColumnsComponent,
+    FeatureTabComponent,
+    OnoffswitchComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -47,6 +67,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatTabsModule,
     MatDividerModule,
     MatButtonModule,
+    MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

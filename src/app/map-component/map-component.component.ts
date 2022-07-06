@@ -16,6 +16,7 @@ const geoPackageCache = {};
 })
 export class MapComponent implements AfterViewInit {
   private map : any;
+  private layers: { [key: string]: any } = {};
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -107,7 +108,14 @@ export class MapComponent implements AfterViewInit {
             });
           return div;
         };
+        this.layers[event.tableNames[0]] = tableLayer;
+        console.log('this.layers is', this.layers)
         this.map.addLayer(tableLayer);
+      })
+
+
+      this.geopackageService.deactivateFeatureLayer$.subscribe(event => {
+        this.map.removeLayer(this.layers[event.tableNames[0]])
       })
 
       

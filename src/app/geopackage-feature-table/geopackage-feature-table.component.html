@@ -1,1 +1,20 @@
+<app-onoffswitch [tableName]="tableName"></app-onoffswitch>
+
 <p>Feature Table "{{tableName}}" has {{count}} features</p>
+    
+<a (click)="toggleDetails()">
+    <button mat-flat-button color="primary" class="letsgoavs">details</button>
+</a>
+    
+<app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
+    
+    
+<!-- <a (click)="toggleZoomTo()">
+    <button mat-flat-button color="primary" class="letsgoavs">zoom to</button>
+</a>
+    NEW COMPONENTS FOR ZOOMTO AND DOWNLOAD
+    
+<a (click)="toggleDownload()">
+    <button mat-flat-button color="primary" class="letsgoavs">download layer as GoeJSON</button>
+</a> -->
+

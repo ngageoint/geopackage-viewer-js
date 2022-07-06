@@ -4,6 +4,7 @@ import { FeatureDao } from '@ngageoint/geopackage/dist/lib/features/user/feature
 import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/featureRow';
 import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
 import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
+import { table } from 'console';
 import { Subject } from 'rxjs';
 
 export interface GeoPackageEvent {
@@ -94,6 +95,13 @@ export class GeopackageService {
   xyzTileScaled(table: string, x: number, y: number, z: number, width?: number, height?: number, canvas?: any, zoomIn?: 2, zoomOut?: 2): Promise<any> {
     return this.geopackage?.xyzTileScaled(table, x, y, z, width, height, canvas, zoomIn, zoomOut)!
   }
+
+  getInfoForFeatureTable(tableName: string): any {
+    var featureDao = this.getGeoPackageFeatureDao(tableName)
+    return this.geopackage?.getInfoForTable(featureDao!)
+  }
+
+
 
   async setGeoPackageArray(bytes: ArrayBuffer) {
   

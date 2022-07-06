@@ -14,7 +14,7 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   @Input() featureDao: FeatureDao<FeatureRow> | undefined
 
   count: number = 0
-  showDetails = null;
+  tableInfo: any;
   constructor(
     @Inject(GeopackageService) private geopackageService: GeopackageService
   ) { }
@@ -26,6 +26,19 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
     this.featureDao = this.geopackageService.getGeoPackageFeatureDao(this.tableName)
     this.count = this.featureDao?.getCount() ?? 0
     this.geopackageService.activateFeatureLayer(this.tableName)
+    this.tableInfo = this.geopackageService.getInfoForFeatureTable(this.tableName)
   }
+
+  showDetails = false;
+  toggleDetails() {
+    if (this.showDetails == false) {
+      this.showDetails = true;
+    } else if (this.showDetails == true) {
+      this.showDetails = false;
+    }
+  }
+
+
+
 
 }

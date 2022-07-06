@@ -1,37 +1,17 @@
 <div *ngFor="let featureTable of tables.features; index as i;">
   <mat-divider class="padding"></mat-divider>
     <mat-card>
-      <mat-slide-toggle>
-
-
-      </mat-slide-toggle>
-      <app-geopackage-feature-table [tableName]="featureTable"></app-geopackage-feature-table>
-      <a (click)="toggleDetails()">
-        <button mat-flat-button color="primary" class="letsgoavs">details</button>
-      </a>
-        <app-details-button *ngIf="showDetails==true"></app-details-button>
-
-
-      <!-- <a (click)="toggleZoomTo()">
-        <button mat-flat-button color="primary" class="letsgoavs">zoom to</button>
-      </a>
-
-      <a (click)="toggleDownload()">
-        <button mat-flat-button color="primary" class="letsgoavs">download layer as GoeJSON</button>
-      </a> -->
-
-
-          
+        <app-geopackage-feature-table [tableName]="featureTable"></app-geopackage-feature-table>
     </mat-card>
 </div>
 
 
-<mat-card>
-    Tile Tables:
-    <div *ngFor="let tileTable of tables.tiles; index as i;">
-      <mat-card>
-        <mat-slide-toggle></mat-slide-toggle>
-          <app-geopackage-tile-table [tableName]="tileTable"></app-geopackage-tile-table>
-      </mat-card>
-    </div>
-</mat-card>
+
+<div *ngFor="let tileTable of tables.tiles; index as i;">
+  <mat-card>
+    <!-- <mat-divider class="padding"></mat-divider> -->
+    <mat-slide-toggle></mat-slide-toggle>
+      <app-geopackage-tile-table [tableName]="tileTable"></app-geopackage-tile-table>
+  </mat-card>
+</div>
+

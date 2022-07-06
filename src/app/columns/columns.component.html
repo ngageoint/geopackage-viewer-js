@@ -1,0 +1,22 @@
+<div class="columns">
+    <div class="section">
+      <div class="column" *ngFor="let column of columns">
+        <div class="item"><span class="label">Index: </span><span class="value">{{column.index}}</span></div>
+        <div class="item"><span class="label">Name: </span><span class="value">{{column.name}}</span></div>
+        <div class="item"><span class="label">Data Type: </span><span class="value">{{column.dataType}}</span></div>
+        <div class="item"><span class="label">Max: </span><span class="value">{{column.max}}</span></div>
+        <div class="item"><span class="label">Not Null: </span><span class="value">{{column.notNull}}</span></div>
+        <div class="item"><span class="label">Default Value: </span><span class="value">{{column.defaultValue}}</span></div>
+        <div class="item"><span class="label">Primary Key: </span><span class="value">{{column.primaryKey}}</span></div>
+    <div *ngIf="column.dataColumn">
+        <div class="section-title">Data Column:</div>
+        <div class="section">
+          <div class="dataColumn">
+            <div class="item"><span class="label">Name: </span><span class="value">{{column.dataColumn.name}}</span></div>
+            <div class="item"><span class="label">Title: </span><span class="value">{{column.dataColumn.title}}</span></div>
+            <div class="item"><span class="label">Description: </span><span class="value">{{column.dataColumn.description}}</span></div>
+            <div class="item"><span class="label">Mime Type: </span><span class="value">{{column.dataColumn.mime_type}}</span></div>
+          </div>
+        </div>
+    </div>
+  </div>
