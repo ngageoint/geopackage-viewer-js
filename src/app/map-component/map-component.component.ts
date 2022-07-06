@@ -70,6 +70,9 @@ export class MapComponent implements AfterViewInit {
 
           return canvas;
         };
+        console.log(`adding feature layer ${event.tableNames[0]}`, tableLayer)
+        this.layers[event.tableNames[0]] = tableLayer
+        console.log(`this.layers is now`, this.layers)
         this.map.addLayer(tableLayer);
       })
 

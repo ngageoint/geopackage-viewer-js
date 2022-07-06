@@ -19,7 +19,7 @@ export class OnoffswitchComponent implements OnInit {
 
   constructor(private fb: FormBuilder, @Inject(GeopackageService) private geopackageService: GeopackageService) {
     this.form = this.fb.group({
-      enable: false,
+      enable: true,
       text: [
         {
           value: null,
