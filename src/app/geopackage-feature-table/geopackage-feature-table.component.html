@@ -8,8 +8,7 @@
     
 <app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
 
-<app-zoomto-button [minLongitude]="minLongitude" [minLatitude]="minLatitude" [maxLongitude]="maxLongitude" [maxLatitude]="maxLatitude" [zoom]="zoom"></app-zoomto-button>
-
+<app-zoomto-button [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="zoom"></app-zoomto-button>
 <!--    
 <a (click)="toggleDownload()">
     <button mat-flat-button color="primary" class="letsgoavs">download layer as GoeJSON</button>

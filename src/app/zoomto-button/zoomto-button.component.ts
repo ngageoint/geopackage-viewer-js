@@ -8,15 +8,15 @@ import { MapService } from '../map.service';
   styleUrls: ['./zoomto-button.component.css']
 })
 export class ZoomtoButtonComponent implements OnInit {
+  @Input() tableInfo: any
   @Input() minLongitude: any
   @Input() minLatitude: any
   @Input() maxLongitude: any
   @Input() maxLatitude: any
   @Input() zoom: any
 
-
   toggleZoomTo() {
-    this.mapService.centerMap([[this.minLongitude,this.minLatitude], [this.maxLongitude,this.maxLatitude]])
+    this.mapService.centerMap([this.tableInfo.contents.minY, ])
   }
 
 
