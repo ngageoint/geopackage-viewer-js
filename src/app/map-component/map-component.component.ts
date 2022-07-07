@@ -125,7 +125,7 @@ export class MapComponent implements AfterViewInit {
 
       
       this.mapService.zoomToSource$.subscribe(event => {
-          this.map.flyTo([ 25,-25 ], [5]);
+          this.map.fitBounds(event.center);
         })
 
 

@@ -46,6 +46,9 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
     }
   }
 
+  toggleDownload() {
+    
+  }
 
 
 }
