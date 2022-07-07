@@ -7,13 +7,8 @@
 </a>
     
 <app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
-    
-    
-<a (click)="toggleZoomTo()">
-    <button mat-flat-button color="primary" class="letsgoavs">zoom to</button>
-</a>
 
-<app-zoomto-button></app-zoomto-button>
+<app-zoomto-button [minLongitude]="minLongitude" [minLatitude]="minLatitude" [maxLongitude]="maxLongitude" [maxLatitude]="maxLatitude" [zoom]="zoom"></app-zoomto-button>
 
 <!--    
 <a (click)="toggleDownload()">

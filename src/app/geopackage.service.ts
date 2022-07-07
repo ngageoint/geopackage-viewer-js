@@ -79,6 +79,8 @@ export class GeopackageService {
     })
   }
 
+  
+
 
   getGeoPackageFeatureDao(tableName: string): FeatureDao<FeatureRow> | undefined {
     // https://ngageoint.github.io/geopackage-js/classes/geopackage.html#getfeaturedao
