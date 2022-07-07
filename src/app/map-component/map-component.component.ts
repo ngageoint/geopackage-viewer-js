@@ -4,6 +4,7 @@ import { GeoPackageAPI, NumberFeaturesTile, setSqljsWasmLocateFile } from '@ngag
 import { GeopackageService } from '../geopackage.service';
 import '@ngageoint/leaflet-geopackage';
 import { ignoreElements } from 'rxjs';
+import { MapService } from '../map.service';
 
 const geoPackageCache = {};
 
@@ -36,11 +37,12 @@ export class MapComponent implements AfterViewInit {
   
   }
 
-    
   
   
   constructor(
-    @Inject(GeopackageService) private geopackageService: GeopackageService
+    @Inject(GeopackageService) private geopackageService: GeopackageService,
+    @Inject(MapService) private mapService: MapService
+
   ) { }
 
 
@@ -122,7 +124,12 @@ export class MapComponent implements AfterViewInit {
       })
 
       
-    
+      this.mapService.zoomToSource$.subscribe(event => {
+          this.map.flyTo([ 25,-25 ], [5]);
+        })
+
+
+      
   }
   
 

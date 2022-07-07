@@ -39,6 +39,13 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   }
 
 
+  toggleZoom = false;
+  toggleZoomTo() {
+    if (this.toggleZoom == false) {
+      this.toggleZoom = true;
+    }
+  }
+
 
 
 }

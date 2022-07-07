@@ -29,6 +29,7 @@ import { FeatureTabComponent } from './feature-tab/feature-tab.component';
 import { OnoffswitchComponent } from './onoffswitch/onoffswitch.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ZoomtoButtonComponent } from './zoomto-button/zoomto-button.component';
 
 
 
@@ -53,6 +54,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ColumnsComponent,
     FeatureTabComponent,
     OnoffswitchComponent,
+    ZoomtoButtonComponent,
   ],
   imports: [
     BrowserAnimationsModule,
