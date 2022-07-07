@@ -16,7 +16,7 @@ export class ZoomtoButtonComponent implements OnInit {
   @Input() zoom: any
 
   toggleZoomTo() {
-    this.mapService.centerMap([this.tableInfo.contents.minY, ])
+    this.mapService.centerMap([[this.tableInfo.contents.minX, this.tableInfo.contents.minY], [this.tableInfo.contents.maxX, this.tableInfo.contents.maxY]])
   }
 
 
