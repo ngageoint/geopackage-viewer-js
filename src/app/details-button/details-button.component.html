@@ -56,8 +56,9 @@
     </mat-tab>
 
     <mat-tab label="Features">
-    TEST
 
+      <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns"></app-feature-tab>
+   
 
     </mat-tab>
 </mat-tab-group>

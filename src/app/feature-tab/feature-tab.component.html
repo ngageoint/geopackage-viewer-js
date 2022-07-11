@@ -1,25 +1,15 @@
-    <!-- <table id="{{tab.tableName}}-feature-table" onmouseout="clearHighlights()">
-      <thead>
-        <tr>
-          <th></th>
-          <div *ngFor="let tileTable of tab.tiles; index as i;">
-            <th>{{tab.displayName}}</th>
-          </div>
-        </tr>
-      </thead>
-      <div *ngFor="let tileTable of tab.features; index as i;">
-        <tr onmouseover="highlightFeature('{{id}}', '{{tableName}}')" ondblclick="zoomToFeature('{{id}}', '{{tableName}}'); $(this).parent().find('.fa-check-circle').removeClass('fa-check-circle').addClass('fa-circle-o'); $(this).find('.fa').removeClass('fa-circle-o').addClass('fa-check-circle');">
-      <td><i class="fa fa-circle-o" onclick="toggleFeature('{{id}}', '{{tableName}}'); if ($(this).hasClass('fa-circle-o')) { $(this).parent().parent().parent().find('.fa-check-circle').removeClass('fa-check-circle').addClass('fa-circle-o');} $(this).toggleClass('fa-circle-o').toggleClass('fa-check-circle');"></i></td>
-      <div *ngFor="let tileTable of tab.values; index as i;">
-      </div>
-    </tr>
-      </div>
+<!-- count{{features.length}} -->
+<!-- {{columns}} -->
+
+<!-- <div *ngFor="let feature of features"> {{feature.fid}} </div> -->
+    <table mat-table [dataSource]="features" class="mat-elevation-z8">
+        <ng-container matColumnDef="{{column.name}}" *ngFor="let column of columns" class="spacing">
+            <th mat-header-cell *matHeaderCellDef> {{column.displayName}} </th>
+            <td mat-cell *matCellDef="let feature"> {{feature[column.displayName]}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
-  <script id="feature-template" type="x-tmpl-mustache">
-    <tr onmouseover="highlightFeature('{{id}}', '{{tableName}}')" ondblclick="zoomToFeature('{{id}}', '{{tableName}}'); $(this).parent().find('.fa-check-circle').removeClass('fa-check-circle').addClass('fa-circle-o'); $(this).find('.fa').removeClass('fa-circle-o').addClass('fa-check-circle');">
-    <td><i class="fa fa-circle-o" onclick="toggleFeature('{{id}}', '{{tableName}}'); if ($(this).hasClass('fa-circle-o')) { $(this).parent().parent().parent().find('.fa-check-circle').removeClass('fa-check-circle').addClass('fa-circle-o');} $(this).toggleClass('fa-circle-o').toggleClass('fa-check-circle');"></i></td>
-      {{#values}}
-        <td>{{{.}}}</td>
-      {{/values}}
-    </tr>
-  </script> -->

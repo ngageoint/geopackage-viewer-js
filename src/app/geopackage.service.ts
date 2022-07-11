@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { GeoPackageAPI, setSqljsWasmLocateFile, GeoPackage, FeatureTiles } from '@ngageoint/geopackage/dist/geopackage.min';
+import { GeoPackageAPI, setSqljsWasmLocateFile, GeoPackage, FeatureTiles, BoundingBox } from '@ngageoint/geopackage/dist/geopackage.min';
 import { FeatureDao } from '@ngageoint/geopackage/dist/lib/features/user/featureDao';
 import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/featureRow';
 import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
 import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 import { table } from 'console';
 import { Subject } from 'rxjs';
+import { Feature } from 'geojson';
 
 export interface GeoPackageEvent {
   geopackage: GeoPackage
@@ -79,8 +80,9 @@ export class GeopackageService {
     })
   }
 
-  
-
+  iterateGeoJSONFeatures(tableName: string, boundingBox?: BoundingBox): IterableIterator<Feature> & object {
+    return this.geopackage!.iterateGeoJSONFeatures(tableName, boundingBox)
+  }
 
   getGeoPackageFeatureDao(tableName: string): FeatureDao<FeatureRow> | undefined {
     // https://ngageoint.github.io/geopackage-js/classes/geopackage.html#getfeaturedao
