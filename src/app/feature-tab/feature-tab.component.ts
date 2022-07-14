@@ -2,6 +2,8 @@ import { Component, Inject, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FeatureDao } from '@ngageoint/geopackage/dist/lib/features/user/featureDao';
 import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/featureRow';
 import { GeopackageService } from '../geopackage.service';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatTableDataSource} from '@angular/material/table';
 
 export interface FeatueTableRow {
   fid: any;
@@ -34,7 +36,10 @@ export class FeatureTabComponent implements OnInit {
 
   ) { }
 
-  
+
+
+
+
   ngOnInit(): void {
     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
@@ -71,5 +76,33 @@ export class FeatureTabComponent implements OnInit {
   }
 
 
+  dataSource = new MatTableDataSource<FeatueTableRow>(this.features);
+  selection = new SelectionModel<FeatueTableRow>(true, []);
+
+
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: FeatueTableRow): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.type + 1}`;
+  }
 
 }

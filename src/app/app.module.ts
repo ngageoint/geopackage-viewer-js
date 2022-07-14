@@ -31,6 +31,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ZoomtoButtonComponent } from './zoomto-button/zoomto-button.component';
 import {MatTableModule} from '@angular/material/table';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -57,6 +61,7 @@ import {MatTableModule} from '@angular/material/table';
     FeatureTabComponent,
     OnoffswitchComponent,
     ZoomtoButtonComponent,
+    RadioButtonComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -76,6 +81,9 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatTableModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
