@@ -159,6 +159,7 @@ export class MapComponent implements AfterViewInit {
         })
 
       this.mapService.drawFeatureSource$.subscribe(event => {
+        console.log("AAAAAAAAAAAAA")
         this.highlightLayer.addData(event.geoJSON);
         this.highlightLayer.bringToFront();
       })

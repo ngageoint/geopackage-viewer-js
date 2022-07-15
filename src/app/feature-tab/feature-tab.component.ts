@@ -75,7 +75,6 @@ export class FeatureTabComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     this.featureDao = this.geopackageService.getGeoPackageFeatureDao(this.tableName)
     this.count = this.featureDao?.getCount() ?? 0
-    this.geopackageService.activateFeatureLayer(this.tableName)
     this.tableInfo = this.geopackageService.getInfoForFeatureTable(this.tableName)
   }
 
@@ -111,7 +110,6 @@ export class FeatureTabComponent implements OnInit {
 
 
   toggleFeature(row?: FeatueTableRow) {
-    console.log(row)
     this.mapService.drawFeature(row!.geoJSON)
   }
 

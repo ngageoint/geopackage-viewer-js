@@ -31,7 +31,7 @@ export class MapService {
 
 
   drawFeature(geoJSON: any): void {
-     this.drawFeatureSource.next({
+    this.drawFeatureSource.next({
       geoJSON: geoJSON
     })
   }
