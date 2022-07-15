@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import { Subject } from 'rxjs';
-import { GeopackageService } from './geopackage.service';
+import { GeopackageService, GeoPackageTableEvent } from './geopackage.service';
 
 export interface MapEvent {
-  center: [number[], number[]]
+  center?: [number[], number[]], geoJSON?: any
 }
 
 @Injectable({
@@ -14,10 +14,12 @@ export interface MapEvent {
 
 export class MapService {
 
+  private drawFeatureSource = new Subject<MapEvent>();
 
   private zoomToSource = new Subject<MapEvent>();
   
   zoomToSource$ = this.zoomToSource.asObservable();
+  drawFeatureSource$ = this.drawFeatureSource.asObservable();
 
   // method to call from zoomto component
   centerMap(center: [number[], number[]]): void {
@@ -28,6 +30,11 @@ export class MapService {
   }
 
 
+  drawFeature(geoJSON: any): void {
+     this.drawFeatureSource.next({
+      geoJSON: geoJSON
+    })
+  }
 
 
 }

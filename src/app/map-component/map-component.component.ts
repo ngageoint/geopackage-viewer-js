@@ -5,6 +5,7 @@ import { GeopackageService } from '../geopackage.service';
 import '@ngageoint/leaflet-geopackage';
 import { ignoreElements } from 'rxjs';
 import { MapService } from '../map.service';
+import * as GeoJSON from 'geojson';
 
 const geoPackageCache = {};
 
@@ -18,6 +19,8 @@ const geoPackageCache = {};
 export class MapComponent implements AfterViewInit {
   private map : any;
   private layers: { [key: string]: any } = {};
+  
+  private highlightLayer: any
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -25,16 +28,43 @@ export class MapComponent implements AfterViewInit {
       zoom: 3
     });
 
+    let featureCollection: GeoJSON.FeatureCollection<any> = {
+      type: 'FeatureCollection',
+      features: [
+        // {
+        //   type: 'Feature',
+        //   geometry: {
+        //     type: 'Point',
+        //     coordinates: [0, 0]
+        //   },
+        //   properties: {}
+        // }
+      ]
+    }
+
+
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
+      maxZoom: 25,
+      minZoom: 1,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
     tiles.addTo(this.map);
 
-
+    this.highlightLayer = L.geoJSON(featureCollection, {
+      style: function(feature) {
+        return {
+          color: '#FF0000',
+          weight: 3,
+          opacity: 1,
+        };
+      },
+    })
+      
   
+
+
+
   }
 
   
@@ -127,6 +157,11 @@ export class MapComponent implements AfterViewInit {
       this.mapService.zoomToSource$.subscribe(event => {
           this.map.fitBounds(event.center);
         })
+
+      this.mapService.drawFeatureSource$.subscribe(event => {
+        this.highlightLayer.addData(event.geoJSON);
+        this.highlightLayer.bringToFront();
+      })
 
 
       

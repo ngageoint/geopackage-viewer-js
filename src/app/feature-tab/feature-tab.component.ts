@@ -4,10 +4,12 @@ import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/feature
 import { GeopackageService } from '../geopackage.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
+import { MapService } from '../map.service';
 
 export interface FeatueTableRow {
   fid: any;
   type: any;
+  geoJSON: any;
 }
 
 
@@ -29,10 +31,11 @@ export class FeatureTabComponent implements OnInit {
   count: number = 0
   tableInfo: any;
   features: Array<any> = [];
-  displayedColumns: Array<string> = [];
-
+  displayedColumns: Array<string> = ['select'];
+  
   constructor(
-    @Inject(GeopackageService) private geopackageService: GeopackageService
+    @Inject(GeopackageService) private geopackageService: GeopackageService,
+    @Inject(MapService) private mapService: MapService,
 
   ) { }
 
@@ -54,9 +57,10 @@ export class FeatureTabComponent implements OnInit {
       //   fid: row.properties!['fid'], 
       //   type: row.geometry.type
       // });
+      row.properties!['geoJSON'] = row.geometry;
       row.properties!['geom'] = row.geometry.type
       this.features.push(row.properties)
-            
+          
     }
     console.log(JSON.stringify(this.columns, null, 2))
     
@@ -93,7 +97,7 @@ export class FeatureTabComponent implements OnInit {
       this.selection.clear();
       return;
     }
-
+    console.log("toggle rows is working")
     this.selection.select(...this.dataSource.data);
   }
 
@@ -104,5 +108,12 @@ export class FeatureTabComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.type + 1}`;
   }
+
+
+  toggleFeature(row?: FeatueTableRow) {
+    console.log(row)
+    this.mapService.drawFeature(row!.geoJSON)
+  }
+
 
 }

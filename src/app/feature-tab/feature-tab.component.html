@@ -34,6 +34,6 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="selection.toggle(row)">
+            (click)="toggleFeature(row)">
         </tr>
       </table>

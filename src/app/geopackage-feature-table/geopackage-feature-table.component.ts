@@ -30,6 +30,7 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   }
 
   showDetails = false;
+  displayedColumns: Array<string> = ['select'];
   toggleDetails() {
     if (this.showDetails == false) {
       this.showDetails = true;
@@ -47,7 +48,7 @@ export class GeopackageFeatureTableComponent implements OnInit, OnChanges {
   }
 
   toggleDownload() {
-    
+
   }
 
 
