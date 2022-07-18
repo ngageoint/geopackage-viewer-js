@@ -101,8 +101,8 @@ export class FeatureTabComponent implements OnInit {
 
 
   toggleFeature(row?: FeatueTableRow) {
-    this.mapService.clearHighights()
-    this.mapService.drawFeature(row!.geoJSON)
+    this.mapService.clearLayer()
+    this.mapService.noZoom(row!.geoJSON)
   }
   selectedRow: any;
 
@@ -112,6 +112,12 @@ export class FeatureTabComponent implements OnInit {
     console.log("doubleclick is working")
     this.mapService.clearLayer();
     this.mapService.dblClickZoom(row?.geoJSON);
+  }
+
+  hoverOver(row?: FeatueTableRow) {
+    console.log("hover over works")
+    this.mapService.clearHighights();
+    this.mapService.drawFeature(row?.geoJSON);
   }
   
   // const geoJson = geoPackage.getFeature(tableName, featureId);

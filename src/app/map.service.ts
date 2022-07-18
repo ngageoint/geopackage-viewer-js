@@ -19,6 +19,8 @@ export class MapService {
   private clearHighlightsSource = new Subject<MapEvent>();
   private featureLayerSource = new Subject<MapEvent>();
   private clearLayerSource = new Subject<MapEvent>();
+  private drawFeatureNoZoomSource = new Subject<MapEvent>();
+
 
 
 
@@ -29,7 +31,9 @@ export class MapService {
   eraseFeatureSource$ = this.eraseFeatureSource.asObservable();
   clearHighightsSource$ = this.clearHighlightsSource.asObservable();
   featureLayerSource$ = this.featureLayerSource.asObservable();
-  clearLayerSource$ = this.featureLayerSource.asObservable();
+  clearLayerSource$ = this.clearLayerSource.asObservable();
+  drawFeatureNoZoom$ = this.drawFeatureNoZoomSource.asObservable();
+
 
 
 
@@ -63,6 +67,12 @@ export class MapService {
 
   dblClickZoom(geoJSON: any): void {
     this.featureLayerSource.next({
+      geoJSON: geoJSON
+    })
+  }
+
+  noZoom(geoJSON: any): void {
+    this.drawFeatureNoZoomSource.next({
       geoJSON: geoJSON
     })
   }

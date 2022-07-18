@@ -193,6 +193,11 @@ export class MapComponent implements AfterViewInit {
 
       this.map.addLayer(this.featureLayer)
 
+      this.mapService.drawFeatureNoZoom$.subscribe(event => {
+        this.featureLayer.addData(event.geoJSON);
+        this.featureLayer.bringToFront();
+      })
+
 
   }
   
