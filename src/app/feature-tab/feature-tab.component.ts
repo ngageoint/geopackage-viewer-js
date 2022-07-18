@@ -27,7 +27,12 @@ export class FeatureTabComponent implements OnInit {
   @Input() featureDao: FeatureDao<FeatureRow> | undefined
   @Input() columns: Array<any> = [];
 
-  
+  @Input() minLongitude: any
+  @Input() minLatitude: any
+  @Input() maxLongitude: any
+  @Input() maxLatitude: any
+  @Input() zoom: any
+
   count: number = 0
   tableInfo: any;
   features: Array<any> = [];
@@ -115,5 +120,10 @@ export class FeatureTabComponent implements OnInit {
 
 
 
+  zoomTo(row?: FeatueTableRow) {
+    console.log("doubleclick is working")
+    this.mapService.centerMap([[this.minLatitude, this.minLongitude], [this.maxLatitude, this.maxLongitude]])
 
+  }
+  
 }

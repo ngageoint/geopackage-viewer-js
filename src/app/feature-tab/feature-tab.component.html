@@ -16,11 +16,7 @@
             </mat-radio-group>
 
 
-              <!-- <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? toggleFeature(row) : null"
-                            [checked]="selection.isSelected(row)"
-                            [aria-label]="checkboxLabel(row)">
-              </mat-checkbox> -->
+
             </td>
           </ng-container>
 
@@ -33,6 +29,6 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="selection.toggle(row)">
+            (click)="selection.toggle(row)" (dblclick)="zoomTo(row)"> 
         </tr>
       </table>

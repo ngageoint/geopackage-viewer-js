@@ -57,7 +57,7 @@
 
     <mat-tab label="Features">
 
-      <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns"></app-feature-tab>
+      <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-feature-tab>
    
 
     </mat-tab>

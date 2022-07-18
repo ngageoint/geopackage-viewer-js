@@ -34,6 +34,7 @@ import {MatTableModule} from '@angular/material/table';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ZoomToOnClickComponent } from './zoom-to-on-click/zoom-to-on-click.component';
 
 
 
@@ -62,6 +63,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     OnoffswitchComponent,
     ZoomtoButtonComponent,
     RadioButtonComponent,
+    ZoomToOnClickComponent,
   ],
   imports: [
     BrowserAnimationsModule,
