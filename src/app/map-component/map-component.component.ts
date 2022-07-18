@@ -180,7 +180,10 @@ export class MapComponent implements AfterViewInit {
         this.highlightLayer.clearLayers();
       })
       
- 
+      this.mapService.clearLayerSource$.subscribe(event => {
+        this.featureLayer.clearLayers();
+      })
+
 
       this.mapService.featureLayerSource$.subscribe(event => {
         this.featureLayer.addData(event.geoJSON);

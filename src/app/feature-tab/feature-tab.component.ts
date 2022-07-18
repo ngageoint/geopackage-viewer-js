@@ -110,6 +110,7 @@ export class FeatureTabComponent implements OnInit {
 
   zoomTo(row?: FeatueTableRow) {
     console.log("doubleclick is working")
+    this.mapService.clearLayer();
     this.mapService.dblClickZoom(row?.geoJSON);
   }
   

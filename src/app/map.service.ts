@@ -18,6 +18,8 @@ export class MapService {
   private eraseFeatureSource = new Subject<MapEvent>();
   private clearHighlightsSource = new Subject<MapEvent>();
   private featureLayerSource = new Subject<MapEvent>();
+  private clearLayerSource = new Subject<MapEvent>();
+
 
 
   private zoomToSource = new Subject<MapEvent>();
@@ -27,6 +29,8 @@ export class MapService {
   eraseFeatureSource$ = this.eraseFeatureSource.asObservable();
   clearHighightsSource$ = this.clearHighlightsSource.asObservable();
   featureLayerSource$ = this.featureLayerSource.asObservable();
+  clearLayerSource$ = this.featureLayerSource.asObservable();
+
 
 
   // method to call from zoomto component
@@ -61,6 +65,11 @@ export class MapService {
     this.featureLayerSource.next({
       geoJSON: geoJSON
     })
+  }
+
+
+  clearLayer(): void {
+    this.clearLayerSource.next({})
   }
 
 }
