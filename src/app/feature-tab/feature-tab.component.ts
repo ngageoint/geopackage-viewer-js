@@ -5,6 +5,7 @@ import { GeopackageService } from '../geopackage.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { MapService } from '../map.service';
+import { MapComponent } from '../map-component/map-component.component';
 
 export interface FeatueTableRow {
   fid: any;
@@ -49,6 +50,7 @@ export class FeatureTabComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     const promise = Promise.resolve();
@@ -95,23 +97,9 @@ export class FeatureTabComponent implements OnInit {
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  toggleAllRows() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-    console.log("toggle rows is working")
-    this.selection.select(...this.dataSource.data);
-  }
 
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: FeatueTableRow): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.type + 1}`;
-  }
+
+
   toggleFeature(row?: FeatueTableRow) {
     this.mapService.clearHighights()
     this.mapService.drawFeature(row!.geoJSON)
@@ -122,8 +110,16 @@ export class FeatureTabComponent implements OnInit {
 
   zoomTo(row?: FeatueTableRow) {
     console.log("doubleclick is working")
-    this.mapService.centerMap([[this.minLatitude, this.minLongitude], [this.maxLatitude, this.maxLongitude]])
-
+    this.mapService.dblClickZoom(row?.geoJSON);
   }
   
+  // const geoJson = geoPackage.getFeature(tableName, featureId);
+  // geoJson.properties.tableName = tableName;
+  // featureLayer.addData(geoJson);
+  // featureLayer.bringToFront();
+  // if (zoom) {
+  //   map.fitBounds(featureLayer.getBounds());
+  // }
+
+
 }

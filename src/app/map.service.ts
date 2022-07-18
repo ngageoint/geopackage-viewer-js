@@ -17,6 +17,7 @@ export class MapService {
   private drawFeatureSource = new Subject<MapEvent>();
   private eraseFeatureSource = new Subject<MapEvent>();
   private clearHighlightsSource = new Subject<MapEvent>();
+  private featureLayerSource = new Subject<MapEvent>();
 
 
   private zoomToSource = new Subject<MapEvent>();
@@ -25,6 +26,8 @@ export class MapService {
   drawFeatureSource$ = this.drawFeatureSource.asObservable();
   eraseFeatureSource$ = this.eraseFeatureSource.asObservable();
   clearHighightsSource$ = this.clearHighlightsSource.asObservable();
+  featureLayerSource$ = this.featureLayerSource.asObservable();
+
 
   // method to call from zoomto component
   centerMap(center: [number[], number[]]): void {
@@ -53,5 +56,11 @@ export class MapService {
     this.clearHighlightsSource.next({})
   }
 
+
+  dblClickZoom(geoJSON: any): void {
+    this.featureLayerSource.next({
+      geoJSON: geoJSON
+    })
+  }
 
 }

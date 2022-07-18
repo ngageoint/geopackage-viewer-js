@@ -14,13 +14,14 @@ const geoPackageCache = {};
 @Component({
   selector: 'app-map',
   templateUrl: './map-component.component.html',
-  styleUrls: ['./map-component.component.scss']
+  styleUrls: ['./map-component.component.css']
 })
 export class MapComponent implements AfterViewInit {
   private map : any;
   private layers: { [key: string]: any } = {};
   
   private highlightLayer: any
+  public featureLayer: any
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -61,7 +62,21 @@ export class MapComponent implements AfterViewInit {
       },
     })
 
+
+    this.featureLayer = L.geoJSON(featureCollection, {
+      style: function(feature) {
+        return {
+          color: '#8000FF',
+          weight: 3,
+          opacity: 1,
+        };
+      },
+    })
+
+
+
   }
+
 
   
   
@@ -165,6 +180,17 @@ export class MapComponent implements AfterViewInit {
         this.highlightLayer.clearLayers();
       })
       
+ 
+
+      this.mapService.featureLayerSource$.subscribe(event => {
+        this.featureLayer.addData(event.geoJSON);
+        this.featureLayer.bringToFront();
+        this.map.fitBounds(this.featureLayer.getBounds())
+      })
+
+      this.map.addLayer(this.featureLayer)
+
+
   }
   
 
