@@ -60,10 +60,6 @@ export class MapComponent implements AfterViewInit {
         };
       },
     })
-      
-  
-
-
 
   }
 
@@ -159,12 +155,15 @@ export class MapComponent implements AfterViewInit {
         })
 
       this.mapService.drawFeatureSource$.subscribe(event => {
-        console.log("AAAAAAAAAAAAA")
         this.highlightLayer.addData(event.geoJSON);
-        this.highlightLayer.bringToFront();
+        this.highlightLayer.bringToFront();        
       })
 
+      this.map.addLayer(this.highlightLayer)
 
+      this.mapService.clearHighightsSource$.subscribe(event => {
+        this.highlightLayer.clearLayers();
+      })
       
   }
   

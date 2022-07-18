@@ -15,11 +15,16 @@ export interface MapEvent {
 export class MapService {
 
   private drawFeatureSource = new Subject<MapEvent>();
+  private eraseFeatureSource = new Subject<MapEvent>();
+  private clearHighlightsSource = new Subject<MapEvent>();
+
 
   private zoomToSource = new Subject<MapEvent>();
   
   zoomToSource$ = this.zoomToSource.asObservable();
   drawFeatureSource$ = this.drawFeatureSource.asObservable();
+  eraseFeatureSource$ = this.eraseFeatureSource.asObservable();
+  clearHighightsSource$ = this.clearHighlightsSource.asObservable();
 
   // method to call from zoomto component
   centerMap(center: [number[], number[]]): void {
@@ -34,6 +39,18 @@ export class MapService {
     this.drawFeatureSource.next({
       geoJSON: geoJSON
     })
+  }
+
+  eraseFeature(geoJSON: any): void {
+    if (geoJSON == null) {
+      this.eraseFeatureSource.next({
+        geoJSON: geoJSON
+      })
+    }
+  }
+
+  clearHighights(): void {
+    this.clearHighlightsSource.next({})
   }
 
 

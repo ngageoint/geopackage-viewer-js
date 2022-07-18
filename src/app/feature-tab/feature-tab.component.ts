@@ -107,11 +107,13 @@ export class FeatureTabComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.type + 1}`;
   }
-
-
   toggleFeature(row?: FeatueTableRow) {
+    this.mapService.clearHighights()
     this.mapService.drawFeature(row!.geoJSON)
   }
+  selectedRow: any;
+
+
 
 
 }

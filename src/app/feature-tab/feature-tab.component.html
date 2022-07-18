@@ -9,19 +9,18 @@
 
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
-            <th mat-header-cell *matHeaderCellDef>
-              <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()"
-                            [aria-label]="checkboxLabel()">
-              </mat-checkbox>
-            </th>
+            <th mat-header-cell *matHeaderCellDef> on/off </th>
             <td mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
+              <mat-radio-group [(ngModel)]="selectedRow" (change)="toggleFeature(row)">
+                <mat-radio-button [value]="row"></mat-radio-button>
+            </mat-radio-group>
+
+
+              <!-- <mat-checkbox (click)="$event.stopPropagation()"
                             (change)="$event ? toggleFeature(row) : null"
                             [checked]="selection.isSelected(row)"
                             [aria-label]="checkboxLabel(row)">
-              </mat-checkbox>
+              </mat-checkbox> -->
             </td>
           </ng-container>
 
@@ -34,6 +33,6 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="toggleFeature(row)">
+            (click)="selection.toggle(row)">
         </tr>
       </table>
