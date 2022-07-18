@@ -3,16 +3,17 @@ import { GeopackageService } from '../geopackage.service';
 import { MapService } from '../map.service';
 
 @Component({
-  selector: 'app-zoom-to-on-click',
-  templateUrl: './zoom-to-on-click.component.html',
-  styleUrls: ['./zoom-to-on-click.component.css']
+  selector: 'app-zoomto-tile',
+  templateUrl: './zoomto-tile.component.html',
+  styleUrls: ['./zoomto-tile.component.css']
 })
-export class ZoomToOnClickComponent implements OnInit {
+export class ZoomtoTileComponent implements OnInit {
   @Input() minLongitude: any
   @Input() minLatitude: any
   @Input() maxLongitude: any
   @Input() maxLatitude: any
   @Input() zoom: any
+
 
   toggleZoomTo() {
     this.mapService.centerMap([[this.minLatitude, this.minLongitude], [this.maxLatitude, this.maxLongitude]])
@@ -34,9 +35,5 @@ export class ZoomToOnClickComponent implements OnInit {
 
 
   }
-
-  
-
-
 
 }

@@ -1,0 +1,64 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Metadata">
+    
+        <div class="metadata">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Features Spatial Reference System
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-srs [srs]="tableInfo.srs"></app-srs>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Contents
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-contents [contents]="tableInfo.contents"></app-contents>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Contents Spatial Reference System
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-contentssrs [contentssrs]="tableInfo.contents.srs"></app-contentssrs>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Geometry Columns
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-geo-columns [geometryColumns]="tableInfo.geometryColumns"></app-geo-columns>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{tableName}} columns:
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-columns [columns]="tableInfo.columns" [tableName]="tableInfo.geometryColumns.tableName"></app-columns>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+          
+
+          </div> 
+        
+    </mat-tab>
+
+    <mat-tab label="Features">
+
+      <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-feature-tab>
+   
+
+    </mat-tab>
+</mat-tab-group>

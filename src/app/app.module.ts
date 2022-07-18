@@ -34,7 +34,10 @@ import {MatTableModule} from '@angular/material/table';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { ZoomToOnClickComponent } from './zoom-to-on-click/zoom-to-on-click.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { OnofftileComponent } from './onofftile/onofftile.component';
+import { DetailsTileComponent } from './details-tile/details-tile.component';
+import { ZoomtoTileComponent } from './zoomto-tile/zoomto-tile.component';
 
 
 
@@ -63,7 +66,10 @@ import { ZoomToOnClickComponent } from './zoom-to-on-click/zoom-to-on-click.comp
     OnoffswitchComponent,
     ZoomtoButtonComponent,
     RadioButtonComponent,
-    ZoomToOnClickComponent,
+    OnofftileComponent,
+    DetailsTileComponent,
+    ZoomtoTileComponent,
+    
   ],
   imports: [
     BrowserAnimationsModule,
@@ -85,6 +91,7 @@ import { ZoomToOnClickComponent } from './zoom-to-on-click/zoom-to-on-click.comp
     MatTableModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
     
   ],
   providers: [],

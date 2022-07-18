@@ -14,7 +14,10 @@ import { GeopackageService } from '../geopackage.service';
 })
 export class GeopackageTileTableComponent implements OnInit {
 
+  
   @Input() tableName: string = ""
+  @Input() featureDao: FeatureDao<FeatureRow> | undefined
+  tableInfo: any;
   @Input() tileDao: TileDao<TileRow> | undefined
 
   count: number = 0
@@ -32,6 +35,15 @@ export class GeopackageTileTableComponent implements OnInit {
     this.geopackageService.activateTileLayer(this.tableName)
   }
 
+  showDetails = false;
+  displayedColumns: Array<string> = ['select'];
+  toggleDetails() {
+    if (this.showDetails == false) {
+      this.showDetails = true;
+    } else if (this.showDetails == true) {
+      this.showDetails = false;
+    }
+  }
   
 
 

@@ -1,1 +1,16 @@
-<p>Feature Table "{{tableName}}" has {{count}} features</p>
+<app-onofftile [tableName]="tableName"></app-onofftile>
+
+
+<p>Tile Table: {{tableName}} (Zoom: ? - ?)</p>
+
+
+<a (click)="toggleDetails()">
+    <button mat-flat-button color="primary" class="letsgoavs">details</button>
+</a>
+    
+
+<app-zoomto-tile></app-zoomto-tile>
+
+
+<app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
+

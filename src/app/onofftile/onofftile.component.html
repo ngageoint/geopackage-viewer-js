@@ -1,0 +1,10 @@
+<div class="basic-container">
+    <form [formGroup]="form" novalidate>
+      <div>
+        <mat-slide-toggle
+        formControlName="enable"
+        (change)="onChange($event.checked)">
+        </mat-slide-toggle>
+      </div>
+    </form>
+  </div>

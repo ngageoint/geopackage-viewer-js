@@ -199,6 +199,15 @@ export class MapComponent implements AfterViewInit {
       })
 
 
+      this.geopackageService.deactivateTileLayer$.subscribe(event => {
+        this.map.removeLayer(this.layers[event.tableNames[0]])
+      })
+
+
+
+
+
+
   }
   
 

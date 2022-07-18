@@ -5,12 +5,11 @@
     </mat-card>
 </div>
 
-
+<mat-divider class="padding"></mat-divider>
 
 <div *ngFor="let tileTable of tables.tiles; index as i;">
   <mat-card>
     <!-- <mat-divider class="padding"></mat-divider> -->
-    <mat-slide-toggle></mat-slide-toggle>
       <app-geopackage-tile-table [tableName]="tileTable"></app-geopackage-tile-table>
   </mat-card>
 </div>

@@ -1,6 +1,6 @@
 <app-onoffswitch [tableName]="tableName"></app-onoffswitch>
 
-<p>Feature Table "{{tableName}}" has {{count}} features</p>
+<p>Feature Table: {{tableName}} ({{count}}) </p>
     
 <a (click)="toggleDetails()">
     <button mat-flat-button color="primary" class="letsgoavs">details</button>
@@ -10,7 +10,7 @@
 <app-zoomto-button [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="tableInfo.contents.zoom"></app-zoomto-button>
 
 
-<app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
+<app-details-tile *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-tile>
 
 
 <!-- <a (click)="toggleDownload()">

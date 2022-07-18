@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZoomToOnClickComponent } from './zoom-to-on-click.component';
+import { DetailsTileComponent } from './details-tile.component';
 
-describe('ZoomToOnClickComponent', () => {
-  let component: ZoomToOnClickComponent;
-  let fixture: ComponentFixture<ZoomToOnClickComponent>;
+describe('DetailsTileComponent', () => {
+  let component: DetailsTileComponent;
+  let fixture: ComponentFixture<DetailsTileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ZoomToOnClickComponent ]
+      declarations: [ DetailsTileComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZoomToOnClickComponent);
+    fixture = TestBed.createComponent(DetailsTileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
