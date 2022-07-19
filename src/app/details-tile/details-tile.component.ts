@@ -5,6 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './details-tile.component.html',
   styleUrls: ['./details-tile.component.css']
 })
+
+
 export class DetailsTileComponent implements OnInit {
   @Input() tableInfo: any = {}
   @Input() geometryColumns: any = {}

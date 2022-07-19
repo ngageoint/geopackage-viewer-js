@@ -6,16 +6,16 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Features Spatial Reference System
+                    Tile Information
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-srs [srs]="tableInfo.srs"></app-srs>
+              <app-tileinfo [tileInfo]="tableInfo.tileInfo"></app-tileinfo>
             </mat-expansion-panel>
 
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Contents
+                    Tile Matrix Spatial Reference System
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <app-contents [contents]="tableInfo.contents"></app-contents>
@@ -24,7 +24,7 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Contents Spatial Reference System
+                    Contents
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <app-contentssrs [contentssrs]="tableInfo.contents.srs"></app-contentssrs>
@@ -33,7 +33,7 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Geometry Columns
+                    Contents Spatial Reference System
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <app-geo-columns [geometryColumns]="tableInfo.geometryColumns"></app-geo-columns>

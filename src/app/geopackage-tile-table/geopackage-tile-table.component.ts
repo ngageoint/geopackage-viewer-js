@@ -19,7 +19,6 @@ export class GeopackageTileTableComponent implements OnInit {
   @Input() featureDao: FeatureDao<FeatureRow> | undefined
   tableInfo: any;
   @Input() tileDao: TileDao<TileRow> | undefined
-
   count: number = 0
 
   constructor(

@@ -38,6 +38,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { OnofftileComponent } from './onofftile/onofftile.component';
 import { DetailsTileComponent } from './details-tile/details-tile.component';
 import { ZoomtoTileComponent } from './zoomto-tile/zoomto-tile.component';
+import { TileinfoComponent } from './tileinfo/tileinfo.component';
+import { TilesrsComponent } from './tilesrs/tilesrs.component';
+import { ContentsTileComponent } from './contents-tile/contents-tile.component';
+import { ContentssrsTileComponent } from './contentssrs-tile/contentssrs-tile.component';
+import { ColumnsTileComponent } from './columns-tile/columns-tile.component';
 
 
 
@@ -69,6 +74,11 @@ import { ZoomtoTileComponent } from './zoomto-tile/zoomto-tile.component';
     OnofftileComponent,
     DetailsTileComponent,
     ZoomtoTileComponent,
+    TileinfoComponent,
+    TilesrsComponent,
+    ContentsTileComponent,
+    ContentssrsTileComponent,
+    ColumnsTileComponent,
     
   ],
   imports: [
