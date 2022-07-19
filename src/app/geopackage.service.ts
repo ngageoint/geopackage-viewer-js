@@ -106,8 +106,8 @@ export class GeopackageService {
   }
 
   getInfoForTileTable(tableName: string): any {
-    var featureDao = this.getGeoPackageTileDao(tableName)
-    return this.geopackage?.getInfoForTable(featureDao!)
+    var tileDao = this.getGeoPackageTileDao(tableName)
+    return this.geopackage?.getInfoForTable(tileDao!)
   }
 
 
