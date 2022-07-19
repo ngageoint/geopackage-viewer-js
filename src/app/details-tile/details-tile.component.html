@@ -18,7 +18,7 @@
                     Tile Matrix Spatial Reference System
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-contents [contents]="tableInfo.contents"></app-contents>
+              <app-tilesrs [srs]="tableInfo.srs"></app-tilesrs>
             </mat-expansion-panel>
 
             <mat-expansion-panel hideToggle>
@@ -27,7 +27,7 @@
                     Contents
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-contentssrs [contentssrs]="tableInfo.contents.srs"></app-contentssrs>
+              <app-contents-tile [contents]="tableInfo.contents"></app-contents-tile>
             </mat-expansion-panel>
 
             <mat-expansion-panel hideToggle>
@@ -36,7 +36,7 @@
                     Contents Spatial Reference System
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-geo-columns [geometryColumns]="tableInfo.geometryColumns"></app-geo-columns>
+              <app-contentssrs-tile [contentssrs]="tableInfo.contents.srs"></app-contentssrs-tile>
             </mat-expansion-panel>
 
             <mat-expansion-panel hideToggle>
@@ -45,7 +45,7 @@
                   {{tableName}} columns:
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-columns [columns]="tableInfo.columns" [tableName]="tableInfo.geometryColumns.tableName"></app-columns>
+              <app-columns-tile [columns]="tableInfo.columns"></app-columns-tile>
             </mat-expansion-panel>
 
           </mat-accordion>
@@ -57,7 +57,7 @@
 
     <mat-tab label="Features">
 
-      <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-feature-tab>
+      <!-- <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-feature-tab> -->
    
 
     </mat-tab>

@@ -32,6 +32,7 @@ export class GeopackageTileTableComponent implements OnInit {
     this.tileDao = this.geopackageService.getGeoPackageTileDao(this.tableName)
     this.count = this.tileDao?.getCount() ?? 0
     this.geopackageService.activateTileLayer(this.tableName)
+    this.tableInfo = this.geopackageService.getInfoForTileTable(this.tableName)
   }
 
   showDetails = false;

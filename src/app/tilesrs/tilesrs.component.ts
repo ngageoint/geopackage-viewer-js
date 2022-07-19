@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tilesrs',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tilesrs.component.css']
 })
 export class TilesrsComponent implements OnInit {
-
+  @Input() srs: any = {}
   constructor() { }
 
   ngOnInit(): void {

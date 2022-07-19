@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-columns-tile',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./columns-tile.component.css']
 })
 export class ColumnsTileComponent implements OnInit {
+  @Input() columns: any = {}
+  // @Input() tableName: string = ""
 
   constructor() { }
 

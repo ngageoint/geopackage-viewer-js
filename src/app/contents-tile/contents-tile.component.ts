@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-contents-tile',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contents-tile.component.css']
 })
 export class ContentsTileComponent implements OnInit {
+  @Input() contents: any = {}
 
   constructor() { }
 

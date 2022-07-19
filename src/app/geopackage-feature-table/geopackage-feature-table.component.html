@@ -10,7 +10,7 @@
 <app-zoomto-button [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="tableInfo.contents.zoom"></app-zoomto-button>
 
 
-<app-details-tile *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-tile>
+<app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
 
 
 <!-- <a (click)="toggleDownload()">

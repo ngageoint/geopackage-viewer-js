@@ -105,6 +105,10 @@ export class GeopackageService {
     return this.geopackage?.getInfoForTable(featureDao!)
   }
 
+  getInfoForTileTable(tableName: string): any {
+    var featureDao = this.getGeoPackageTileDao(tableName)
+    return this.geopackage?.getInfoForTable(featureDao!)
+  }
 
 
   async setGeoPackageArray(bytes: ArrayBuffer) {
