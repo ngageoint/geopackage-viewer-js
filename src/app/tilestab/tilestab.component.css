@@ -1,4 +1,11 @@
 .section-title {
     text-align: center;
-    /* font-weight: bold; */
+    font-weight: bold;
+}
+.label {
+    font-weight: bold;
+}
+
+.value {
+    color: gray;
 }

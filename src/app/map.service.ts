@@ -5,7 +5,7 @@ import { GeopackageService, GeoPackageTableEvent } from './geopackage.service';
 import { MapComponent } from './map-component/map-component.component';
 
 export interface MapEvent {
-  center?: [number[], number[]], geoJSON?: any, bounds?:{ north: number, south: number, west: number, east: number}
+  center?: [number[], number[]], geoJSON?: any, bounds?:{ north: number, south: number, west: number, east: number, zoom: number}
 }
 
 @Injectable({
@@ -88,9 +88,9 @@ export class MapService {
   }
 
 
-  setBounds(north: any, south: any, east: any, west: any): void {
+  setBounds(north: any, south: any, east: any, west: any, zoom: any): void {
     this.setBoundsSource.next({
-      bounds: {north: north, south: south, east: east, west: west}
+      bounds: {north: north, south: south, east: east, west: west, zoom: zoom}
     })
   }
 

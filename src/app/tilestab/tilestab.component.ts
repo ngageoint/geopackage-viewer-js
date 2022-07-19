@@ -32,8 +32,12 @@ export class TilestabComponent implements OnInit {
   @Input() minLatitude: any
   @Input() maxLongitude: any
   @Input() maxLatitude: any
-  @Input() zoom: any
 
+   north: any
+   south: any
+   east: any
+   west: any
+   zoom: any
   count: number = 0
   
   features: Array<any> = [];
@@ -46,12 +50,41 @@ export class TilestabComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.tableInfo.getNorth())
-    this.mapService.setBounds(this.tableInfo.getBounds().getNorth(), this.tableInfo.getBounds().getSouth(), this.tableInfo.getBounds().getEast(), this.tableInfo.getBounds().getWest())
-    
+    this.mapService.setBoundsSource$.subscribe(event => {
+      var bounds = event.bounds
+      this.north = bounds?.north.toFixed(3)
+      this.south = bounds?.south.toFixed(3)
+      this.east = bounds?.east.toFixed(3)
+      this.west = bounds?.west.toFixed(3)
+      this.zoom = bounds?.zoom
+      
+    })
+
+
   }
 
+  toggleFeature(row?: FeatueTableRow) {
+    this.mapService.clearLayer()
+    this.mapService.noZoom(row!.geoJSON)
+  }
+  selectedRow: any;
 
+
+
+  zoomTo(row?: FeatueTableRow) {
+    console.log("doubleclick is working")
+    this.mapService.clearLayer();
+    this.mapService.dblClickZoom(row?.geoJSON);
+  }
+
+  hoverOver(row?: FeatueTableRow) {
+    console.log("hover over works")
+    this.mapService.clearHighights();
+    this.mapService.drawFeature(row?.geoJSON);
+  }
+
+  dataSource = new MatTableDataSource<FeatueTableRow>(this.features);
+  selection = new SelectionModel<FeatueTableRow>(true, []);
 
   // ngOnInit(): void {
     
@@ -90,11 +123,6 @@ export class TilestabComponent implements OnInit {
   // }
 
 
-  // dataSource = new MatTableDataSource<FeatueTableRow>(this.features);
-  // selection = new SelectionModel<FeatueTableRow>(true, []);
-
-
-
   // isAllSelected() {
   //   const numSelected = this.selection.selected.length;
   //   const numRows = this.dataSource.data.length;
@@ -104,25 +132,7 @@ export class TilestabComponent implements OnInit {
 
 
 
-  // toggleFeature(row?: FeatueTableRow) {
-  //   this.mapService.clearLayer()
-  //   this.mapService.noZoom(row!.geoJSON)
-  // }
-  // selectedRow: any;
-
-
-
-  // zoomTo(row?: FeatueTableRow) {
-  //   console.log("doubleclick is working")
-  //   this.mapService.clearLayer();
-  //   this.mapService.dblClickZoom(row?.geoJSON);
-  // }
-
-  // hoverOver(row?: FeatueTableRow) {
-  //   console.log("hover over works")
-  //   this.mapService.clearHighights();
-  //   this.mapService.drawFeature(row?.geoJSON);
-  // }
+ 
   
 
 

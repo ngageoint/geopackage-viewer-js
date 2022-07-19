@@ -204,28 +204,18 @@ export class MapComponent implements AfterViewInit {
         this.map.removeLayer(this.layers[event.tableNames[0]])
       })
       
+
       this.map.on('moveend', () => {
 
-        // console.log(this.map.getBounds().getNorth())
         var north = this.map.getBounds().getNorth()
         var south = this.map.getBounds().getSouth()
         var east = this.map.getBounds().getEast()
         var west = this.map.getBounds().getWest()
+        var zoom = this.map.getZoom()
+
+        this.mapService.setBounds(north, south, east, west, zoom);
         
       });
-
-      this.mapService.setBoundsSource$.subscribe(event => {
-        this.map.on('moveend', () => {
-
-          var north = this.map.getBounds().getNorth()
-          var south = this.map.getBounds().getSouth()
-          var east = this.map.getBounds().getEast()
-          var west = this.map.getBounds().getWest()
-
-          this.map.setBounds(north, south, east, west);
-          
-        });
-      })
       
 
 
