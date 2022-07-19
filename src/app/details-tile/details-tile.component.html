@@ -9,7 +9,7 @@
                     Tile Information
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-tileinfo [tileInfo]="tableInfo.tileInfo"></app-tileinfo>
+              <app-tileinfo [tileInfo]="tableInfo"></app-tileinfo>
             </mat-expansion-panel>
 
             <mat-expansion-panel hideToggle>
@@ -55,10 +55,7 @@
         
     </mat-tab>
 
-    <mat-tab label="Features">
-
-      <!-- <app-feature-tab [tableName]="tableInfo.geometryColumns.tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-feature-tab> -->
-   
-
+    <mat-tab label="Tiles">
+      <app-tilestab [tileInfo]="tableInfo" [tableName]="tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-tilestab>
     </mat-tab>
 </mat-tab-group>

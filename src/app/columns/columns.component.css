@@ -5,3 +5,7 @@
 .value {
     color: gray;
 }
+
+.section-title {
+    font-weight: bold;
+}
