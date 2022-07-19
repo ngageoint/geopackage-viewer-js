@@ -2,9 +2,10 @@ import { Inject, Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import { Subject } from 'rxjs';
 import { GeopackageService, GeoPackageTableEvent } from './geopackage.service';
+import { MapComponent } from './map-component/map-component.component';
 
 export interface MapEvent {
-  center?: [number[], number[]], geoJSON?: any
+  center?: [number[], number[]], geoJSON?: any, bounds?:{ north: number, south: number, west: number, east: number}
 }
 
 @Injectable({
@@ -20,6 +21,8 @@ export class MapService {
   private featureLayerSource = new Subject<MapEvent>();
   private clearLayerSource = new Subject<MapEvent>();
   private drawFeatureNoZoomSource = new Subject<MapEvent>();
+  private setBoundsSource = new Subject<MapEvent>();
+
 
 
 
@@ -33,6 +36,8 @@ export class MapService {
   featureLayerSource$ = this.featureLayerSource.asObservable();
   clearLayerSource$ = this.clearLayerSource.asObservable();
   drawFeatureNoZoom$ = this.drawFeatureNoZoomSource.asObservable();
+  setBoundsSource$ = this.setBoundsSource.asObservable();
+
 
 
 
@@ -80,6 +85,13 @@ export class MapService {
 
   clearLayer(): void {
     this.clearLayerSource.next({})
+  }
+
+
+  setBounds(north: any, south: any, east: any, west: any): void {
+    this.setBoundsSource.next({
+      bounds: {north: north, south: south, east: east, west: west}
+    })
   }
 
 }

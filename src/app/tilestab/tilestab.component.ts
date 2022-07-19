@@ -46,6 +46,9 @@ export class TilestabComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.tableInfo.getNorth())
+    this.mapService.setBounds(this.tableInfo.getBounds().getNorth(), this.tableInfo.getBounds().getSouth(), this.tableInfo.getBounds().getEast(), this.tableInfo.getBounds().getWest())
+    
   }
 
 

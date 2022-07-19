@@ -8,6 +8,7 @@ import { MapService } from '../map.service';
 import * as GeoJSON from 'geojson';
 
 const geoPackageCache = {};
+const visibleTileTables = {};
 
 
 
@@ -202,8 +203,30 @@ export class MapComponent implements AfterViewInit {
       this.geopackageService.deactivateTileLayer$.subscribe(event => {
         this.map.removeLayer(this.layers[event.tableNames[0]])
       })
+      
+      this.map.on('moveend', () => {
 
+        // console.log(this.map.getBounds().getNorth())
+        var north = this.map.getBounds().getNorth()
+        var south = this.map.getBounds().getSouth()
+        var east = this.map.getBounds().getEast()
+        var west = this.map.getBounds().getWest()
+        
+      });
 
+      this.mapService.setBoundsSource$.subscribe(event => {
+        this.map.on('moveend', () => {
+
+          var north = this.map.getBounds().getNorth()
+          var south = this.map.getBounds().getSouth()
+          var east = this.map.getBounds().getEast()
+          var west = this.map.getBounds().getWest()
+
+          this.map.setBounds(north, south, east, west);
+          
+        });
+      })
+      
 
 
 
