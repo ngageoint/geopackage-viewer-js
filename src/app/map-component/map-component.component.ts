@@ -200,10 +200,8 @@ export class MapComponent implements AfterViewInit {
       })
 
       this.mapService.drawTileNoZoomSource$.subscribe(event => {
-        this.map.addData(event.geoJSON);
-        this.map.bringToFront();
+        
       })
-
 
 
       this.geopackageService.deactivateTileLayer$.subscribe(event => {

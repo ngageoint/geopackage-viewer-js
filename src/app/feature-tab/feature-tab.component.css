@@ -1,7 +1,10 @@
-.mat-row {
-    height: auto;
-  }
-  
-  .mat-cell {
-    padding: 8px 8px 8px 0;
-  }
+.fuckyou {
+  padding: 8px;
+}
+.spacing {
+  padding: 8px;
+  text-align: center;
+}
+.center {
+  text-align: center;
+}

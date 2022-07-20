@@ -64,7 +64,8 @@ export class TilestabComponent implements OnInit {
       var newlocalvariable = this.geopackageService.populateTiles(bounds, this.tableName, this.zoom)
       console.log(JSON.stringify(newlocalvariable.tiles, null, 2))
 
-      this.tiles.push(this.geopackageService.populateTiles(bounds, this.tableName, this.zoom).tiles)
+      this.tiles = newlocalvariable.tiles
+      console.log(JSON.stringify(this.tiles, null, 2))
 
     })
 
@@ -72,25 +73,6 @@ export class TilestabComponent implements OnInit {
       this.displayedColumns.push(column.name)
     }
 
-    
-    //     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
-    // const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
-    // const promise = Promise.resolve();
-    // for (const row of each) {
-    //   var feature: any = {};
-    //   feature.tableName = this.tableName; //tableName.replace(/\s/g, '_');
-    //   feature.values = [];
-    //   feature.row = row;
-    //   console.log(JSON.stringify(feature, null, 2))
-    //   // this.features.push({
-    //   //   fid: row.properties!['fid'], 
-    //   //   type: row.geometry.type
-    //   // });
-    //   row.properties!['geoJSON'] = row.geometry;
-    //   row.properties!['geom'] = row.geometry.type
-    //   this.tiles.push(row.properties)
-          
-    // }
   }
 
 
@@ -118,8 +100,9 @@ export class TilestabComponent implements OnInit {
 
   hoverOver(row?: TileTableRow) {
     console.log("hover over works")
+    console.log(row)
     this.mapService.clearHighights();
-    this.mapService.drawTileNoZoom(row?.geoJSON);
+    this.mapService.noZoom(row?.geoJSON);
   }
 
   dataSource = new MatTableDataSource<TileTableRow>(this.tiles);
