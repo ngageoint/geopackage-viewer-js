@@ -5,7 +5,7 @@ import { FeatureRow } from '@ngageoint/geopackage/dist/lib/features/user/feature
 import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
 import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 import { table } from 'console';
-import { Subject } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { Feature } from 'geojson';
 
 export interface GeoPackageEvent {
@@ -79,6 +79,23 @@ export class GeopackageService {
       tableNames: [tablename]
     })
   }
+
+
+ populateTiles(bounds: any, tableName: any, zoom: any) {
+  const mapBounds = bounds
+  const tiles = this.geopackage!.getTilesInBoundingBoxWebZoom(
+      tableName,
+      zoom,
+      Math.max(-180, mapBounds.west),
+      Math.min(mapBounds.east, 180),
+      mapBounds.south,
+      mapBounds.north,
+    );
+    return tiles;
+ }
+
+
+
 
   iterateGeoJSONFeatures(tableName: string, boundingBox?: BoundingBox): IterableIterator<Feature> & object {
     return this.geopackage!.iterateGeoJSONFeatures(tableName, boundingBox)

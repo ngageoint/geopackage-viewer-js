@@ -53,8 +53,6 @@ export class TilestabComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.columns)
-
     this.mapService.setBoundsSource$.subscribe(event => {
       var bounds = event.bounds
       this.north = bounds?.north.toFixed(3)
@@ -63,6 +61,9 @@ export class TilestabComponent implements OnInit {
       this.west = bounds?.west.toFixed(3)
       this.zoom = bounds?.zoom
       
+      this.tiles.push(this.geopackageService.populateTiles(bounds, this.tableName, this.zoom).tiles)
+      
+
     })
 
     for (const column of this.columns) {
@@ -70,6 +71,37 @@ export class TilestabComponent implements OnInit {
     }
 
 
+    
+
+
+    // loadTiles = function(tableName, zoom, tilesElement) {
+    //   const mapBounds = map.getBounds();
+    //   if (imageOverlay) map.removeLayer(imageOverlay);
+    //   currentTile = {};
+    
+    //   const tilesTableTemplate = $('#all-tiles-template').html();
+    //   Mustache.parse(tilesTableTemplate);
+    
+    //   const tiles = geoPackage.getTilesInBoundingBoxWebZoom(
+    //     tableName,
+    //     zoom,
+    //     Math.max(-180, mapBounds.getWest()),
+    //     Math.min(mapBounds.getEast(), 180),
+    //     mapBounds.getSouth(),
+    //     mapBounds.getNorth(),
+    //   );
+    //   if (!tiles || !tiles.tiles || !tiles.tiles.length) {
+    //     tilesElement.empty();
+    //     tilesElement.html(
+    //       '<div class="section-title">No tiles exist in the GeoPackage for the current bounds and zoom level</div>',
+    //     );
+    //     return;
+    //   }
+    //   const rendered = Mustache.render(tilesTableTemplate, tiles);
+    //   tilesElement.empty();
+    //   tilesElement.append(rendered);
+    // };
+    
     //     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     // const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     // const promise = Promise.resolve();
