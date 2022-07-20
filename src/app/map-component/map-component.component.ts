@@ -199,6 +199,12 @@ export class MapComponent implements AfterViewInit {
         this.featureLayer.bringToFront();
       })
 
+      this.mapService.drawTileNoZoomSource$.subscribe(event => {
+        this.map.addData(event.geoJSON);
+        this.map.bringToFront();
+      })
+
+
 
       this.geopackageService.deactivateTileLayer$.subscribe(event => {
         this.map.removeLayer(this.layers[event.tableNames[0]])

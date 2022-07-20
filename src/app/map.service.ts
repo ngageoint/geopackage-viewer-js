@@ -22,6 +22,8 @@ export class MapService {
   private clearLayerSource = new Subject<MapEvent>();
   private drawFeatureNoZoomSource = new Subject<MapEvent>();
   private setBoundsSource = new Subject<MapEvent>();
+  private drawTileNoZoomSource = new Subject<MapEvent>();
+
 
 
 
@@ -37,6 +39,8 @@ export class MapService {
   clearLayerSource$ = this.clearLayerSource.asObservable();
   drawFeatureNoZoom$ = this.drawFeatureNoZoomSource.asObservable();
   setBoundsSource$ = this.setBoundsSource.asObservable();
+  drawTileNoZoomSource$ = this.drawTileNoZoomSource.asObservable();
+
 
 
 
@@ -93,5 +97,15 @@ export class MapService {
       bounds: {north: north, south: south, east: east, west: west, zoom: zoom}
     })
   }
+
+  drawTileNoZoom(geoJSON: any): void {
+    this.drawTileNoZoomSource.next({
+      geoJSON: geoJSON
+    }) 
+  }
+
+
+
+
 
 }

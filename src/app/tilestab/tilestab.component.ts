@@ -6,8 +6,10 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { MapService } from '../map.service';
 import { MapComponent } from '../map-component/map-component.component';
+import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
+import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 
-export interface FeatueTableRow {
+export interface TileTableRow {
   fid: any;
   type: any;
   geoJSON: any;
@@ -24,8 +26,9 @@ export class TilestabComponent implements OnInit {
 
   @Input() tab: any = {}
   @Input() tableName: string = ""
-  @Input() featureDao: FeatureDao<FeatureRow> | undefined
+  @Input() tileDao: TileDao<TileRow> | undefined
   @Input() columns: Array<any> = [];
+  //  @Input() columns: any = {}
   @Input() tableInfo: any;
   @Input() tileInfo: any;
   @Input() minLongitude: any
@@ -33,14 +36,14 @@ export class TilestabComponent implements OnInit {
   @Input() maxLongitude: any
   @Input() maxLatitude: any
 
-   north: any
-   south: any
-   east: any
-   west: any
-   zoom: any
+  north: any
+  south: any
+  east: any
+  west: any
+  zoom: any
   count: number = 0
   
-  features: Array<any> = [];
+  tiles: Array<any> = [];
   displayedColumns: Array<string> = ['select'];
   
   constructor(
@@ -50,6 +53,8 @@ export class TilestabComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.columns)
+
     this.mapService.setBoundsSource$.subscribe(event => {
       var bounds = event.bounds
       this.north = bounds?.north.toFixed(3)
@@ -60,81 +65,62 @@ export class TilestabComponent implements OnInit {
       
     })
 
+    for (const column of this.columns) {
+      this.displayedColumns.push(column.name)
+    }
 
+
+    //     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
+    // const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
+    // const promise = Promise.resolve();
+    // for (const row of each) {
+    //   var feature: any = {};
+    //   feature.tableName = this.tableName; //tableName.replace(/\s/g, '_');
+    //   feature.values = [];
+    //   feature.row = row;
+    //   console.log(JSON.stringify(feature, null, 2))
+    //   // this.features.push({
+    //   //   fid: row.properties!['fid'], 
+    //   //   type: row.geometry.type
+    //   // });
+    //   row.properties!['geoJSON'] = row.geometry;
+    //   row.properties!['geom'] = row.geometry.type
+    //   this.tiles.push(row.properties)
+          
+    // }
   }
 
-  toggleFeature(row?: FeatueTableRow) {
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.tileDao = this.geopackageService.getGeoPackageTileDao(this.tableName)
+    this.count = this.tileDao?.getCount() ?? 0
+    this.tableInfo = this.geopackageService.getGeoPackageTileDao(this.tableName)
+  }
+
+  toggleTile(row?: TileTableRow) {
     this.mapService.clearLayer()
-    this.mapService.noZoom(row!.geoJSON)
+    this.mapService.drawTileNoZoom(row!.geoJSON)
   }
+  
+  
   selectedRow: any;
 
 
 
-  zoomTo(row?: FeatueTableRow) {
+  zoomTo(row?: TileTableRow) {
     console.log("doubleclick is working")
     this.mapService.clearLayer();
     this.mapService.dblClickZoom(row?.geoJSON);
   }
 
-  hoverOver(row?: FeatueTableRow) {
+  hoverOver(row?: TileTableRow) {
     console.log("hover over works")
     this.mapService.clearHighights();
-    this.mapService.drawFeature(row?.geoJSON);
+    this.mapService.drawTileNoZoom(row?.geoJSON);
   }
 
-  dataSource = new MatTableDataSource<FeatueTableRow>(this.features);
-  selection = new SelectionModel<FeatueTableRow>(true, []);
-
-  // ngOnInit(): void {
-    
-  //   // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
-  //   const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
-  //   const promise = Promise.resolve();
-  //   for (const row of each) {
-  //     var feature: any = {};
-  //     feature.tableName = this.tableName; //tableName.replace(/\s/g, '_');
-  //     feature.values = [];
-  //     feature.row = row;
-  //     console.log(JSON.stringify(feature, null, 2))
-  //     // this.features.push({
-  //     //   fid: row.properties!['fid'], 
-  //     //   type: row.geometry.type
-  //     // });
-  //     row.properties!['geoJSON'] = row.geometry;
-  //     row.properties!['geom'] = row.geometry.type
-  //     this.features.push(row.properties)
-          
-  //   }
-  //   console.log(JSON.stringify(this.columns, null, 2))
-    
-    
-    
-  //   for (const column of this.columns) {
-  //     this.displayedColumns.push(column.name)
-  //   }
-  // }
-
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.featureDao = this.geopackageService.getGeoPackageFeatureDao(this.tableName)
-  //   this.count = this.featureDao?.getCount() ?? 0
-  //   this.tableInfo = this.geopackageService.getInfoForFeatureTable(this.tableName)
-  // }
-
-
-  // isAllSelected() {
-  //   const numSelected = this.selection.selected.length;
-  //   const numRows = this.dataSource.data.length;
-  //   return numSelected === numRows;
-  // }
-
-
-
-
- 
-  
-
+  dataSource = new MatTableDataSource<TileTableRow>(this.tiles);
+  selection = new SelectionModel<TileTableRow>(true, []);
 
 }
 
