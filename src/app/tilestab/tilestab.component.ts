@@ -61,8 +61,10 @@ export class TilestabComponent implements OnInit {
       this.west = bounds?.west.toFixed(3)
       this.zoom = bounds?.zoom
       
+      var newlocalvariable = this.geopackageService.populateTiles(bounds, this.tableName, this.zoom)
+      console.log(JSON.stringify(newlocalvariable.tiles, null, 2))
+
       this.tiles.push(this.geopackageService.populateTiles(bounds, this.tableName, this.zoom).tiles)
-      
 
     })
 
@@ -70,37 +72,6 @@ export class TilestabComponent implements OnInit {
       this.displayedColumns.push(column.name)
     }
 
-
-    
-
-
-    // loadTiles = function(tableName, zoom, tilesElement) {
-    //   const mapBounds = map.getBounds();
-    //   if (imageOverlay) map.removeLayer(imageOverlay);
-    //   currentTile = {};
-    
-    //   const tilesTableTemplate = $('#all-tiles-template').html();
-    //   Mustache.parse(tilesTableTemplate);
-    
-    //   const tiles = geoPackage.getTilesInBoundingBoxWebZoom(
-    //     tableName,
-    //     zoom,
-    //     Math.max(-180, mapBounds.getWest()),
-    //     Math.min(mapBounds.getEast(), 180),
-    //     mapBounds.getSouth(),
-    //     mapBounds.getNorth(),
-    //   );
-    //   if (!tiles || !tiles.tiles || !tiles.tiles.length) {
-    //     tilesElement.empty();
-    //     tilesElement.html(
-    //       '<div class="section-title">No tiles exist in the GeoPackage for the current bounds and zoom level</div>',
-    //     );
-    //     return;
-    //   }
-    //   const rendered = Mustache.render(tilesTableTemplate, tiles);
-    //   tilesElement.empty();
-    //   tilesElement.append(rendered);
-    // };
     
     //     // this.features = this.geopackageService.iterateGeoJSONFeatures(this.tableName);
     // const each = this.geopackageService.iterateGeoJSONFeatures(this.tableName);

@@ -29,7 +29,7 @@
 
         <ng-container matColumnDef="{{column.name}}" *ngFor="let column of columns" class="spacing">
             <th mat-header-cell *matHeaderCellDef> {{column.displayName}} </th>
-            <td mat-cell *matCellDef="let feature"> {{feature[column.displayName]}} </td>
+            <td mat-cell *matCellDef="let feature"> {{feature[column.name]}} </td>
         </ng-container>
 
 

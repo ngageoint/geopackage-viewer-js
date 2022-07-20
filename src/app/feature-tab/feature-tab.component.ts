@@ -59,7 +59,7 @@ export class FeatureTabComponent implements OnInit {
       feature.tableName = this.tableName; //tableName.replace(/\s/g, '_');
       feature.values = [];
       feature.row = row;
-      console.log(JSON.stringify(feature, null, 2))
+      // console.log(JSON.stringify(feature, null, 2))
       // this.features.push({
       //   fid: row.properties!['fid'], 
       //   type: row.geometry.type
