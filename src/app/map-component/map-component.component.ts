@@ -213,9 +213,9 @@ export class MapComponent implements AfterViewInit {
       this.mapService.getImageSource$.subscribe(event => {
         this.mapService.getTileImage(event.geoJSON);
       })
-
+      var imageOverlay: L.ImageOverlay
       this.mapService.clearTileLayerSource$.subscribe(event => {
-        this.mapService.clearTileLayer()
+        this.map.removeLayer(imageOverlay)
       })
 
       this.mapService.drawTileImageSource$.subscribe(event => {
@@ -227,7 +227,7 @@ export class MapComponent implements AfterViewInit {
         const maxLatitude = event.bounds.north
         const maxLongitude = event.bounds.east
 
-        const imageOverlay = L.imageOverlay(event.tileUrl, [
+        imageOverlay = L.imageOverlay(event.tileUrl, [
           [minLatitude, minLongitude],
           [maxLatitude, maxLongitude],
         ]);
