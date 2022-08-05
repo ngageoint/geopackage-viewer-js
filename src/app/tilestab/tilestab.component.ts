@@ -106,7 +106,6 @@ export class TilestabComponent implements OnInit {
     this.mapService.drawTileImage(url, {north: b.maxLatitude, south: b.minLatitude, east: b.maxLongitude, west: b.minLongitude, zoom: row.zoom_level})
   }
   
-  
   selectedRow: any;
 
 
