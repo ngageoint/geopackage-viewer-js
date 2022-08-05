@@ -8,11 +8,16 @@ import { MapService } from '../map.service';
 import { MapComponent } from '../map-component/map-component.component';
 import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
 import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
+import { BoundingBox } from '@ngageoint/geopackage';
 
 export interface TileTableRow {
   fid: any;
   type: any;
   geoJSON: any;
+  minLongitude: any
+  minLatitude: any
+  maxLongitude: any
+  maxLatitude: any
 }
 
 
@@ -62,10 +67,10 @@ export class TilestabComponent implements OnInit {
       this.zoom = bounds?.zoom
       
       var newlocalvariable = this.geopackageService.populateTiles(bounds, this.tableName, this.zoom)
-      console.log(JSON.stringify(newlocalvariable.tiles, null, 2))
+      // console.log(JSON.stringify(newlocalvariable.tiles, null, 2))
 
       this.tiles = newlocalvariable.tiles
-      console.log(JSON.stringify(this.tiles, null, 2))
+      // console.log(JSON.stringify(this.tiles, null, 2))
 
     })
 
@@ -83,8 +88,16 @@ export class TilestabComponent implements OnInit {
   }
 
   toggleTile(row?: TileTableRow) {
+    console.log("click is working")
     this.mapService.clearLayer()
-    this.mapService.drawTileNoZoom(row!.geoJSON)
+    if (row == undefined) {
+      return
+    }
+    var b = new BoundingBox(row.minLongitude, row.maxLongitude, row.minLatitude, row.maxLatitude)
+    b = b.projectBoundingBox(this.tileDao?.projection, "EPSG:4326")
+    var geojson = b.toGeoJSON()
+    console.log("b", b)
+    this.mapService.drawTileNoZoom(geojson)
   }
   
   
@@ -100,9 +113,15 @@ export class TilestabComponent implements OnInit {
 
   hoverOver(row?: TileTableRow) {
     console.log("hover over works")
-    console.log(row)
-    this.mapService.clearHighights();
-    this.mapService.noZoom(row?.geoJSON);
+    this.mapService.clearLayer()
+    if (row == undefined) {
+      return
+    }
+    var b = new BoundingBox(row.minLongitude, row.maxLongitude, row.minLatitude, row.maxLatitude)
+    b = b.projectBoundingBox(this.tileDao?.projection, "EPSG:4326")
+    var geojson = b.toGeoJSON()
+    console.log("b", b)
+    this.mapService.noZoom(geojson)
   }
 
   dataSource = new MatTableDataSource<TileTableRow>(this.tiles);

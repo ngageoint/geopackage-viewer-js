@@ -207,7 +207,14 @@ export class MapComponent implements AfterViewInit {
       this.geopackageService.deactivateTileLayer$.subscribe(event => {
         this.map.removeLayer(this.layers[event.tableNames[0]])
       })
-      
+
+
+      this.mapService.getImageSource$.subscribe(event => {
+        this.mapService.getTileImage(event.geoJSON);
+      })
+
+
+
 
       this.map.on('moveend', () => {
 
@@ -233,15 +240,3 @@ export class MapComponent implements AfterViewInit {
 
 }
 
-// L.GridLayer.DebugCoords = L.GridLayer.extend({
-//   createTile: function (coords) {
-//       var tile = document.createElement('div');
-//       tile.innerHTML = [coords.x, coords.y, coords.z].join(', ');
-//       tile.style.outline = '1px solid red';
-//       return tile;
-//   }
-// });
-
-// L.gridLayer.debugCoords = function(opts) {
-//   return new L.GridLayer.DebugCoords(opts);
-// };

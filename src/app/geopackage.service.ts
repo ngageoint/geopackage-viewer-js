@@ -81,6 +81,7 @@ export class GeopackageService {
   }
 
 
+
  populateTiles(bounds: any, tableName: any, zoom: any) {
   const mapBounds = bounds
   const tiles = this.geopackage!.getTilesInBoundingBoxWebZoom(
@@ -94,8 +95,20 @@ export class GeopackageService {
     return tiles;
  }
 
-
-
+  currentTile = {};
+  tileImage(
+    tileColumn: any,
+    tileRow: any,
+    zoom: any,
+    minLongitude: any,
+    minLatitude: any,
+    maxLongitude: any,
+    maxLatitude: any,
+    projection: any,
+    tableName: any,
+   ) {
+    
+  }
 
   iterateGeoJSONFeatures(tableName: string, boundingBox?: BoundingBox): IterableIterator<Feature> & object {
     return this.geopackage!.iterateGeoJSONFeatures(tableName, boundingBox)

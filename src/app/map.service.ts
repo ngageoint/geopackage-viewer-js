@@ -23,6 +23,8 @@ export class MapService {
   private drawFeatureNoZoomSource = new Subject<MapEvent>();
   private setBoundsSource = new Subject<MapEvent>();
   private drawTileNoZoomSource = new Subject<MapEvent>();
+  private getImageSource = new Subject<MapEvent>();
+
 
 
 
@@ -40,6 +42,7 @@ export class MapService {
   drawFeatureNoZoom$ = this.drawFeatureNoZoomSource.asObservable();
   setBoundsSource$ = this.setBoundsSource.asObservable();
   drawTileNoZoomSource$ = this.drawTileNoZoomSource.asObservable();
+  getImageSource$ = this.getImageSource.asObservable();
 
 
 
@@ -104,8 +107,14 @@ export class MapService {
     }) 
   }
 
+  getTileImage(geoJSON: any): void {
+    this.getImageSource.next({
+      geoJSON: geoJSON
+    }) 
+  }
 
 
+  
 
 
 }

@@ -17,9 +17,4 @@ export class DetailsButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    // columns: tableInfos[tableName].columns,
-    // srs: tableInfos[tableName].srs,
-    // geometryColumns: tableInfos[tableName].geometryColumns,
-    // tableName: tableName.replace(/\s/g, '_'),
-    // features: [],
 }
