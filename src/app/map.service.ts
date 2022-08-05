@@ -5,7 +5,16 @@ import { GeopackageService, GeoPackageTableEvent } from './geopackage.service';
 import { MapComponent } from './map-component/map-component.component';
 
 export interface MapEvent {
-  center?: [number[], number[]], geoJSON?: any, bounds?:{ north: number, south: number, west: number, east: number, zoom: number}
+  center?: [number[], number[]],
+   geoJSON?: any,
+    bounds?:{
+      north: number,
+      south: number,
+      west: number,
+      east: number,
+      zoom: number
+    },
+    tileUrl?: any
 }
 
 @Injectable({
@@ -24,6 +33,9 @@ export class MapService {
   private setBoundsSource = new Subject<MapEvent>();
   private drawTileNoZoomSource = new Subject<MapEvent>();
   private getImageSource = new Subject<MapEvent>();
+  private drawTileImageSource = new Subject<MapEvent>();
+  private clearTileLayerSource = new Subject<MapEvent>();
+
 
 
 
@@ -43,6 +55,9 @@ export class MapService {
   setBoundsSource$ = this.setBoundsSource.asObservable();
   drawTileNoZoomSource$ = this.drawTileNoZoomSource.asObservable();
   getImageSource$ = this.getImageSource.asObservable();
+  drawTileImageSource$ = this.drawTileImageSource.asObservable();
+  clearTileLayerSource$ = this.clearTileLayerSource.asObservable();
+
 
 
 
@@ -113,6 +128,16 @@ export class MapService {
     }) 
   }
 
+  drawTileImage(url: any, bounds: any): any {
+    this.drawTileImageSource.next({
+      tileUrl: url,
+      bounds: bounds
+    }) 
+  }
+
+  clearTileLayer(): void {
+    this.clearTileLayerSource.next({})
+  }
 
   
 

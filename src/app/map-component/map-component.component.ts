@@ -6,6 +6,7 @@ import '@ngageoint/leaflet-geopackage';
 import { ignoreElements } from 'rxjs';
 import { MapService } from '../map.service';
 import * as GeoJSON from 'geojson';
+import { url } from 'inspector';
 
 const geoPackageCache = {};
 const visibleTileTables = {};
@@ -213,6 +214,26 @@ export class MapComponent implements AfterViewInit {
         this.mapService.getTileImage(event.geoJSON);
       })
 
+      this.mapService.clearTileLayerSource$.subscribe(event => {
+        this.mapService.clearTileLayer()
+      })
+
+      this.mapService.drawTileImageSource$.subscribe(event => {
+        if (event.bounds == null) {
+          return
+        }
+        const minLatitude = event.bounds.south
+        const minLongitude = event.bounds.west
+        const maxLatitude = event.bounds.north
+        const maxLongitude = event.bounds.east
+
+        const imageOverlay = L.imageOverlay(event.tileUrl, [
+          [minLatitude, minLongitude],
+          [maxLatitude, maxLongitude],
+        ]);
+        imageOverlay.addTo(this.map);
+        console.log(minLatitude, maxLatitude, minLongitude, maxLongitude, event.tileUrl)
+      })
 
 
 

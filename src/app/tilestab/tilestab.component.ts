@@ -9,6 +9,7 @@ import { MapComponent } from '../map-component/map-component.component';
 import { TileDao } from '@ngageoint/geopackage/dist/lib/tiles/user/tileDao';
 import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 import { BoundingBox } from '@ngageoint/geopackage';
+import { bounds } from 'leaflet';
 
 export interface TileTableRow {
   fid: any;
@@ -18,6 +19,9 @@ export interface TileTableRow {
   minLatitude: any
   maxLongitude: any
   maxLatitude: any
+  tile_column: any
+  tile_row: any
+  zoom_level: any
 }
 
 
@@ -89,7 +93,7 @@ export class TilestabComponent implements OnInit {
 
   toggleTile(row?: TileTableRow) {
     console.log("click is working")
-    this.mapService.clearLayer()
+    this.mapService.clearTileLayer()
     if (row == undefined) {
       return
     }
@@ -98,6 +102,8 @@ export class TilestabComponent implements OnInit {
     var geojson = b.toGeoJSON()
     console.log("b", b)
     this.mapService.drawTileNoZoom(geojson)
+    const url = this.geopackageService.getTileFromTable(this.tableName, row.zoom_level, row.tile_row, row.tile_column)
+    this.mapService.drawTileImage(url, {north: b.maxLatitude, south: b.minLatitude, east: b.maxLongitude, west: b.minLongitude, zoom: row.zoom_level})
   }
   
   

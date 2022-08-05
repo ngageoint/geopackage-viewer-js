@@ -7,6 +7,9 @@ import { TileRow } from '@ngageoint/geopackage/dist/lib/tiles/user/tileRow';
 import { table } from 'console';
 import { map, Subject } from 'rxjs';
 import { Feature } from 'geojson';
+import * as L from 'leaflet';
+import { imageOverlay } from 'leaflet';
+import {  } from "module";
 
 export interface GeoPackageEvent {
   geopackage: GeoPackage
@@ -92,6 +95,7 @@ export class GeopackageService {
       mapBounds.south,
       mapBounds.north,
     );
+    console.log(JSON.stringify(tiles, null, 2))
     return tiles;
  }
 
@@ -138,6 +142,24 @@ export class GeopackageService {
   getInfoForTileTable(tableName: string): any {
     var tileDao = this.getGeoPackageTileDao(tableName)
     return this.geopackage?.getInfoForTable(tileDao!)
+  }
+
+  getTileFromTable(tableName: any, zoom: any, tileRow: any, tileColumn: any): any {
+    const tile = this.geopackage?.getTileFromTable(tableName, zoom, tileRow, tileColumn)
+    if (tile == null) {
+      return
+    }
+    const tileData = tile.tileData;
+    const type = "image/png"
+    let binary = '';
+    const bytes = tileData;
+    const len = bytes?.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    const base64Data = btoa(binary);
+    const url = 'data:' + type + ';base64,' + base64Data;
+    return url
   }
 
 
