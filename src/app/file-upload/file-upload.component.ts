@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpEventType } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 //import { AppComponent } from '../app.component';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { AppComponent } from '../app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { GeopackageService } from '../geopackage.service';
+import { finalize, Subscription } from 'rxjs';
 
 
 @Component({
@@ -20,57 +21,25 @@ import { GeopackageService } from '../geopackage.service';
 
 export class FileUploadComponent {
 
-  fileName = '';
+  holder?: boolean;
+  fileName?: any;
 
   constructor(private http: HttpClient, private geopackageservice: GeopackageService) {}
 
   onFileSelected(event: any) {
+    this.holder = false
 
       const file:File = event.target.files[0];
-      console.log("i am a file")
       if (file) {
         const r = new FileReader()
         r.onload = () => {
           const array = new Uint8Array(r.result as ArrayBuffer);
-          console.log("file has been read") 
-          // set the array of bytes on the geopackage service
           this.geopackageservice.setGeoPackageArray(array);
-
         }
         r.readAsArrayBuffer(file)
-          // if it is a GeoPackage file
-          //  if (file.name.lastIndexOf('gpkg') === file.name.lastIndexOf('.') + 1) {
-          //    if (window.piwik) {
-          //      Piwik.getAsyncTracker().trackEvent('GeoPackage', 'load', 'File Size', array.byteLength);
-          //    }
-          //    ga('send', {
-          //      hitType: 'event',
-          //      eventCategory: 'GeoPackage',
-          //      eventAction: 'load',
-          //      eventLabel: 'File Size',
-          //      eventValue: array.byteLength,
-          //    });
-          //    loadByteArray(array).then(function() {
-          //      $('#choose-label')
-          //        .find('i')
-          //        .toggle();
-          //      $('#download').removeClass('gone');
-          //      $('#status').addClass('gone');
-          //    });
-
-
-
-
-        console.log(`the file is $file`)
-          // this.fileName = file.name;
-
-          // const formData = new FormData();
-
-          // formData.append("thumbnail", file);
-
-          // const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-          // upload$.subscribe();
+        this.fileName = file.name
+        console.log(file)
+        this.holder = true
       }
   }
 }

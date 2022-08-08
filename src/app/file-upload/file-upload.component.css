@@ -29,7 +29,29 @@ h4 {
     font-size: 14px;
 }
 
+h5 {
+    margin: 3px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
 .padding {
     padding-top: 10px;
     font-size: 10px;
 }
+
+.else-ver {
+    line-height: 25px;
+    margin: 3px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    max-height: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: max-content;
+    white-space: pre-wrap !important;
+    font-size: 14px;
+}
+

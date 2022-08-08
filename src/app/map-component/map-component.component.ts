@@ -213,7 +213,6 @@ export class MapComponent implements AfterViewInit {
       this.mapService.getImageSource$.subscribe(event => {
         this.mapService.getTileImage(event.geoJSON);
       })
-      
       var imageOverlay: L.ImageOverlay
       this.mapService.clearTileLayerSource$.subscribe(event => {
         this.map.removeLayer(imageOverlay)

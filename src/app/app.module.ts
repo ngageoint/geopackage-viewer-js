@@ -44,6 +44,7 @@ import { ContentsTileComponent } from './contents-tile/contents-tile.component';
 import { ContentssrsTileComponent } from './contentssrs-tile/contentssrs-tile.component';
 import { ColumnsTileComponent } from './columns-tile/columns-tile.component';
 import { TilestabComponent } from './tilestab/tilestab.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -104,6 +105,7 @@ import { TilestabComponent } from './tilestab/tilestab.component';
     MatRadioModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     
   ],
   providers: [],
