@@ -1,7 +1,7 @@
 <app-onofftile [tableName]="tableName"></app-onofftile>
 
 
-<p>Tile Table: {{tableName}} (Zoom: ? - ?)</p>
+<p>Tile Table: {{tableName}} (Zoom: {{tableInfo.minZoom}} - {{tableInfo.maxZoom}})</p>
 
 
 <a (click)="toggleDetails()">
