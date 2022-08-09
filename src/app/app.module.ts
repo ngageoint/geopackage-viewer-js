@@ -45,6 +45,7 @@ import { ContentssrsTileComponent } from './contentssrs-tile/contentssrs-tile.co
 import { ColumnsTileComponent } from './columns-tile/columns-tile.component';
 import { TilestabComponent } from './tilestab/tilestab.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ClearallbuttonComponent } from './clearallbutton/clearallbutton.component';
 
 
 
@@ -82,6 +83,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ContentssrsTileComponent,
     ColumnsTileComponent,
     TilestabComponent,
+    ClearallbuttonComponent,
     
   ],
   imports: [

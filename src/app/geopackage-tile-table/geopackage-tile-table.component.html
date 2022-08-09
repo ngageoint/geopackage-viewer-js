@@ -11,6 +11,7 @@
 
 <app-zoomto-tile [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="tableInfo.contents.zoom"></app-zoomto-tile>
 
+<app-clearallbutton></app-clearallbutton>
 
 <app-details-tile *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-tile>
 
