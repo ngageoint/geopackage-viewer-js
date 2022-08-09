@@ -1,11 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FileUploadComponent } from '../file-upload/file-upload.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-
-
 
 
 @Component({

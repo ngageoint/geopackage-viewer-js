@@ -1,17 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HttpEventType } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-//import { AppComponent } from '../app.component';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from '../app.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MainPanelComponent } from '../main-panel/main-panel.component';
 import { GeopackageService } from '../geopackage.service';
-import { finalize, Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'file-upload',

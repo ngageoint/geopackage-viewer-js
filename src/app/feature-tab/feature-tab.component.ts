@@ -5,7 +5,6 @@ import { GeopackageService } from '../geopackage.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { MapService } from '../map.service';
-import { MapComponent } from '../map-component/map-component.component';
 
 export interface FeatueTableRow {
   fid: any;

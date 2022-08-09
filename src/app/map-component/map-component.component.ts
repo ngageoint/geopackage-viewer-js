@@ -3,10 +3,8 @@ import * as L from 'leaflet';
 import { GeoPackageAPI, NumberFeaturesTile, setSqljsWasmLocateFile } from '@ngageoint/geopackage';
 import { GeopackageService } from '../geopackage.service';
 import '@ngageoint/leaflet-geopackage';
-import { ignoreElements } from 'rxjs';
 import { MapService } from '../map.service';
 import * as GeoJSON from 'geojson';
-import { url } from 'inspector';
 
 const geoPackageCache = {};
 const visibleTileTables = {};
