@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "taketwo": {
+    "geopackage-viewer-js": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "crypto"
             ],
-            "outputPath": "dist/taketwo",
+            "outputPath": "dist/geopackage-viewer-js",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
