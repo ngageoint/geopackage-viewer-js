@@ -36,7 +36,6 @@
             ],
             "styles": [
               "src/app-theme.scss",
-              // "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
@@ -79,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "taketwo:build:production"
+              "browserTarget": "geopackage-viewer-js:build:production"
             },
             "development": {
-              "browserTarget": "taketwo:build:development"
+              "browserTarget": "geopackage-viewer-js:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "taketwo:build"
+            "browserTarget": "geopackage-viewer-js:build"
           }
         },
         "test": {
@@ -121,5 +120,5 @@
       }
     }
   },
-  "defaultProject": "taketwo"
+  "defaultProject": "geopackage-viewer-js"
 }
