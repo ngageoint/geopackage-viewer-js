@@ -1,0 +1,16 @@
+<div *ngFor="let featureTable of tables.features; index as i;">
+  <mat-divider class="padding"></mat-divider>
+    <mat-card>
+        <app-geopackage-feature-table [tableName]="featureTable"></app-geopackage-feature-table>
+    </mat-card>
+</div>
+
+<mat-divider class="padding"></mat-divider>
+
+<div *ngFor="let tileTable of tables.tiles; index as i;">
+  <mat-card>
+    <!-- <mat-divider class="padding"></mat-divider> -->
+      <app-geopackage-tile-table [tableName]="tileTable"></app-geopackage-tile-table>
+  </mat-card>
+</div>
+

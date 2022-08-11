@@ -1,0 +1,86 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$mat-primarycolor: (
+  0 : #e3e9ee,
+  100 : #b9c7d5,
+  200 : #8aa2b9,
+  300 : #5b7d9c,
+  400 : #386187,
+  500 : #154572,
+  600 : #123e6a,
+  700 : #0f365f,
+  800 : #0c2e55,
+  900 : #061f42,
+  A100 : #78a6ff,
+  A200 : #4585ff,
+  A400 : #1264ff,
+  A700 : #0055f7,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+)
+);
+$mat-accentcolor: (
+  50 : #e5f3f4,
+  100 : #bfe0e3,
+  200 : #94ccd0,
+  300 : #69b8bd,
+  400 : #49a8ae,
+  500 : #2999a0,
+  600 : #249198,
+  700 : #1f868e,
+  800 : #197c84,
+  900 : #0f6b73,
+  A100 : #a7f7ff,
+  A200 : #74f2ff,
+  A400 : #41edff,
+  A700 : #27eaff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+)
+);
+
+$gp-viewer-app-primary: mat-palette($mat-primarycolor);
+$gp-viewer-app-accent:  mat-palette($mat-accentcolor);
+
+// The warn palette is optional (defaults to red).
+$gp-viewer-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$gp-viewer-app-theme: mat-light-theme($gp-viewer-app-primary, $gp-viewer-app-accent, $gp-viewer-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($gp-viewer-app-theme);

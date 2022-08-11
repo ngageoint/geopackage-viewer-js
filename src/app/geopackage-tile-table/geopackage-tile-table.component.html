@@ -1,0 +1,17 @@
+<app-onofftile [tableName]="tableName"></app-onofftile>
+
+
+<p>Tile Table: {{tableName}} (Zoom: {{tableInfo.minZoom}} - {{tableInfo.maxZoom}})</p>
+
+
+<a (click)="toggleDetails()">
+    <button mat-flat-button color="primary" class="viewer-button">details</button>
+</a>
+    
+
+<app-zoomto-tile [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="tableInfo.contents.zoom"></app-zoomto-tile>
+
+<app-clearallbutton></app-clearallbutton>
+
+<app-details-tile *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-tile>
+

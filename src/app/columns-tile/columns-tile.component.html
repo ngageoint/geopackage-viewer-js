@@ -1,0 +1,13 @@
+<div class="columns">
+    <div class="section">
+      <div class="column" *ngFor="let column of columns">
+        <div class="item"><span class="label">Index: </span><span class="value">{{column.index}}</span></div>
+        <div class="item"><span class="label">Name: </span><span class="value">{{column.name}}</span></div>
+        <div class="item"><span class="label">Max: </span><span class="value">{{column.max}}</span></div>
+        <div class="item"><span class="label">Not Null: </span><span class="value">{{column.notNull}}</span></div>
+        <div class="item"><span class="label">Default Value: </span><span class="value">{{column.defaultValue}}</span></div>
+        <div class="item"><span class="label">Primary Key: </span><span class="value">{{column.primaryKey}}</span></div>
+        <br>
+        </div>
+    </div>
+  </div>

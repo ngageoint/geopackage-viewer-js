@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="hamburger icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>GeoPackage Viewer</span>
+  <span class="spacer"></span>
+  
+</mat-toolbar>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer mode="side" #drawer opened>
+    <div class="card">
+      <div class="card-body">
+        <div style>
+        <h4 class="card-title"><a href="https://github.com/ngageoint/geopackage-viewer-js">API Documentation</a></h4>
+        <p class="card-text">
+          You can load a GeoPackage directly from a URL by including a gpkg parameter in the URL. Specify which layers (if any) you would like to load with layers parameters.
+        </p>
+        <h4><a href="https://ngageoint.github.io/geopackage-js/?gpkg=http://ngageoint.github.io/GeoPackage/examples/rivers.gpkg&layers=rivers">For Example (click me)</a></h4>
+        <file-upload></file-upload>
+        <h5>Supported file types for conversion are GeoJSON, Shapefile, Shapefile Zip, MBTiles, KML and KMZ</h5>
+        <h6>- or -</h6>
+        <h6>Open one of these samples:</h6>
+        <h4><a href="https://ngageoint.github.io/GeoPackage/examples/rivers.gpkg">Natural Earth Rivers</a></h4>
+        <h4><a href="https://www.geopackage.org/data/gdal_sample.gpkg">Technology Test Data Set</a></h4>  
+        <h4>More GeoPackages can be found at:</h4>
+        <h4><a href="https://www.geopackage.org/data.html">https://www.geopackage.org/data.html</a></h4>
+        <app-geopackage-general-information></app-geopackage-general-information>
+      </div>
+      </div>
+    </div>
+  </mat-drawer>
+  
+  
+  
+  <mat-drawer-content>
+
+    <app-map></app-map>
+  
+  </mat-drawer-content>
+</mat-drawer-container>

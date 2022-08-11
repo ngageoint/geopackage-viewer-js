@@ -1,0 +1,17 @@
+<input type="file" class="file-input"
+    (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+    <button mat-raised-button color="primary" class="upload-btn"
+      (click)="fileUpload.click()" *ngIf="holder == false || holder == undefined; else elseBlock">
+      <h4>Open a GeoPackage or Convert a Supported File Type</h4>
+    </button>
+</div>
+
+<ng-template #elseBlock>
+  <button mat-raised-button color="primary" class="else-ver"
+      (click)="fileUpload.click()">
+      <h5>{{fileName}}</h5>
+    </button>
+</ng-template>
+

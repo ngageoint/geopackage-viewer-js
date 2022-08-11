@@ -1,0 +1,19 @@
+<app-onoffswitch [tableName]="tableName"></app-onoffswitch>
+
+<p>Feature Table: {{tableName}} ({{count}}) </p>
+    
+<a (click)="toggleDetails()">
+    <button mat-flat-button color="primary" class="viewer-button">details</button>
+</a>
+    
+
+<app-zoomto-button [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY" [zoom]="tableInfo.contents.zoom"></app-zoomto-button>
+
+<app-clearallbutton></app-clearallbutton>
+
+<app-details-button *ngIf="showDetails==true" [tableInfo]="tableInfo" [tableName]="tableName"></app-details-button>
+
+
+
+
+

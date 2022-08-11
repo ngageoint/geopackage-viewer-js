@@ -1,0 +1,22 @@
+.section-title {
+    text-align: center;
+    font-weight: bold;
+}
+.label {
+    font-weight: bold;
+}
+
+.value {
+    color: gray;
+}
+
+.padding {
+    padding: 8px;
+}
+.spacing {
+    text-align: center;
+    padding: 8px;
+}
+.center {
+    text-align: center;
+}

@@ -1,0 +1,61 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Metadata">
+    
+        <div class="metadata">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Tile Information
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-tileinfo [tileInfo]="tableInfo"></app-tileinfo>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Tile Matrix Spatial Reference System
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-tilesrs [srs]="tableInfo.srs"></app-tilesrs>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Contents
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-contents-tile [contents]="tableInfo.contents"></app-contents-tile>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Contents Spatial Reference System
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-contentssrs-tile [contentssrs]="tableInfo.contents.srs"></app-contentssrs-tile>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{tableName}} columns:
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-columns-tile [columns]="tableInfo.columns"></app-columns-tile>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+          
+
+          </div> 
+        
+    </mat-tab>
+
+    <mat-tab label="Tiles">
+      <app-tilestab [tileInfo]="tableInfo" [tableName]="tableName" [columns]="tableInfo.columns" [minLongitude]="tableInfo.contents.minX" [minLatitude]="tableInfo.contents.minY" [maxLongitude]="tableInfo.contents.maxX" [maxLatitude]="tableInfo.contents.maxY"></app-tilestab>
+    </mat-tab>
+</mat-tab-group>

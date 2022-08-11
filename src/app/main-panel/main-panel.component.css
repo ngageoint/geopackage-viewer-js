@@ -1,0 +1,56 @@
+#rightbar {
+    width: 25%;
+    height: 100%;
+}
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 30%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: rgb(255, 255, 255); /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  }
+body {
+    background-color: lightgray;
+  }
+h1 {
+    color: rgb(0, 0, 0);
+}
+p {
+    color: black;
+}
+h4 {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.file-input {
+    display: none;
+  }
+h5 {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 12px;
+}
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid #555;
+}
+
+.card {
+    width: 22rem; 
+    position: relative; 
+    margin: 15px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
