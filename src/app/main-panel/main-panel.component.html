@@ -1,8 +1,13 @@
-<mat-drawer-container class="example-container" autosize>
-
-<!-- good luck to whatever poor soul has to make this drawer work -->
-
-  <mat-drawer mode="side" opened>
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="hamburger icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>GeoPackage Viewer</span>
+  <span class="spacer"></span>
+  
+</mat-toolbar>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer mode="side" #drawer opened>
     <div class="card">
       <div class="card-body">
         <div style>

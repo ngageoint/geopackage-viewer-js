@@ -46,7 +46,7 @@ import { ColumnsTileComponent } from './columns-tile/columns-tile.component';
 import { TilestabComponent } from './tilestab/tilestab.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ClearallbuttonComponent } from './clearallbutton/clearallbutton.component';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 
@@ -108,7 +108,7 @@ import { ClearallbuttonComponent } from './clearallbutton/clearallbutton.compone
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
