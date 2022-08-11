@@ -23,7 +23,4 @@ export class ClearallbuttonComponent implements OnInit {
     this.mapService.clearLayer()
     this.mapService.clearTileLayer()
   }
-
-
-
 }
